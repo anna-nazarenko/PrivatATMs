@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		37B905049013FD9969BC9B02 /* libPods-PrivatATMs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D15728EB1F5FEB25D8678C89 /* libPods-PrivatATMs.a */; };
+		430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430734CC27983FFA001A11BC /* ExchangeViewController.swift */; };
+		43458CB927980EB500A98ADE /* ATMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* ATMViewController.swift */; };
 		43F66429279701DB008C7990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F66428279701DB008C7990 /* AppDelegate.swift */; };
 		43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6642A279701DB008C7990 /* SceneDelegate.swift */; };
 		43F6642D279701DB008C7990 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6642C279701DB008C7990 /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32D35AEECA26E5D7C795DD89 /* Pods-PrivatATMs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivatATMs.release.xcconfig"; path = "Target Support Files/Pods-PrivatATMs/Pods-PrivatATMs.release.xcconfig"; sourceTree = "<group>"; };
+		430734CC27983FFA001A11BC /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		43458CB827980EB500A98ADE /* ATMViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMViewController.swift; sourceTree = "<group>"; };
 		43F66425279701DB008C7990 /* PrivatATMs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivatATMs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F66428279701DB008C7990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43F6642A279701DB008C7990 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +30,8 @@
 		43F66431279701DB008C7990 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43F66434279701DB008C7990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43F66436279701DB008C7990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		54088EC772C9BAB4624EC81C /* Pods-PrivatATMs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivatATMs.debug.xcconfig"; path = "Target Support Files/Pods-PrivatATMs/Pods-PrivatATMs.debug.xcconfig"; sourceTree = "<group>"; };
+		D15728EB1F5FEB25D8678C89 /* libPods-PrivatATMs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PrivatATMs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B905049013FD9969BC9B02 /* libPods-PrivatATMs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,8 @@
 			children = (
 				43F66427279701DB008C7990 /* PrivatATMs */,
 				43F66426279701DB008C7990 /* Products */,
+				5F61AFD91CC05CEE8A5B5B16 /* Pods */,
+				DB07AD53216D0A2E64DF404F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +67,58 @@
 		43F66427279701DB008C7990 /* PrivatATMs */ = {
 			isa = PBXGroup;
 			children = (
+				43F6643C27970622008C7990 /* Model */,
+				43F6643D2797062A008C7990 /* View */,
+				43F6643E27970633008C7990 /* Controller */,
 				43F66428279701DB008C7990 /* AppDelegate.swift */,
 				43F6642A279701DB008C7990 /* SceneDelegate.swift */,
-				43F6642C279701DB008C7990 /* ViewController.swift */,
-				43F6642E279701DB008C7990 /* Main.storyboard */,
 				43F66431279701DB008C7990 /* Assets.xcassets */,
 				43F66433279701DB008C7990 /* LaunchScreen.storyboard */,
 				43F66436279701DB008C7990 /* Info.plist */,
 			);
 			path = PrivatATMs;
+			sourceTree = "<group>";
+		};
+		43F6643C27970622008C7990 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		43F6643D2797062A008C7990 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43F6642E279701DB008C7990 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43F6643E27970633008C7990 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				43F6642C279701DB008C7990 /* ViewController.swift */,
+				43458CB827980EB500A98ADE /* ATMViewController.swift */,
+				430734CC27983FFA001A11BC /* ExchangeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5F61AFD91CC05CEE8A5B5B16 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54088EC772C9BAB4624EC81C /* Pods-PrivatATMs.debug.xcconfig */,
+				32D35AEECA26E5D7C795DD89 /* Pods-PrivatATMs.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB07AD53216D0A2E64DF404F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D15728EB1F5FEB25D8678C89 /* libPods-PrivatATMs.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,6 +128,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 43F66439279701DB008C7990 /* Build configuration list for PBXNativeTarget "PrivatATMs" */;
 			buildPhases = (
+				BDAB030AF12F9782C4AA2E71 /* [CP] Check Pods Manifest.lock */,
 				43F66421279701DB008C7990 /* Sources */,
 				43F66422279701DB008C7990 /* Frameworks */,
 				43F66423279701DB008C7990 /* Resources */,
@@ -133,14 +188,41 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BDAB030AF12F9782C4AA2E71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PrivatATMs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		43F66421279701DB008C7990 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				43F6642D279701DB008C7990 /* ViewController.swift in Sources */,
+				430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */,
 				43F66429279701DB008C7990 /* AppDelegate.swift in Sources */,
 				43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */,
+				43458CB927980EB500A98ADE /* ATMViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +366,7 @@
 		};
 		43F6643A279701DB008C7990 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54088EC772C9BAB4624EC81C /* Pods-PrivatATMs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,12 +389,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		43F6643B279701DB008C7990 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32D35AEECA26E5D7C795DD89 /* Pods-PrivatATMs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -334,7 +418,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
