@@ -6,14 +6,34 @@
 //
 
 import Foundation
+import UIKit
+
+enum API {
+    static let baseURL = "https://api.privatbank.ua/p24api/"
+}
+
+protocol NetworkManagerDelegate {
+    func didUpdateData(_ networkManager: NetworkManager, data: [Device])
+    func didFailWithError(error: Error)
+}
 
 class NetworkManager {
     
-    var urlString = "https://api.privatbank.ua/p24api/infrastructure?json&tso&address=&city=Львів".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-    var results: Result?
+    static let shared = NetworkManager(baseURL: API.baseURL)
+    
+    let baseUrl: String
+    
+    var delegate: NetworkManagerDelegate?
+    
+    var devices: [Device]?
 
+    private init(baseURL: String) {
+        self.baseUrl = baseURL
+    }
+    
     func fetchCashMachines() {
-        performRequest(with: urlString)
+        let stringURL = "\(baseUrl)infrastructure?json&tso&address=&city=Львів".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        performRequest(with: stringURL)
     }
     
     func performRequest(with urlString: String) {
@@ -21,12 +41,14 @@ class NetworkManager {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, responce, error in
                 if error != nil {
-                    print("Error with retrieving data: \(String(describing: error))")
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
                 if let safeData = data {
-                    self.parseJSON(safeData)
+                    if let results = self.parseJSON(safeData) {
+                        self.delegate?.didUpdateData(self, data: results)
+                    }
                 }
             }
             
@@ -34,16 +56,16 @@ class NetworkManager {
         }
     }
     
-    func parseJSON(_ resultData: Data) {
+    func parseJSON(_ resultData: Data) -> [Device]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(Result.self, from: resultData)
-            DispatchQueue.main.async {
-                self.results = decodedData
-                print(self.results ?? "nil")
-            }
+            self.devices = decodedData.devices
+            return devices
+            
         } catch {
-            print("Error with decoding data: \(error)")
+            delegate?.didFailWithError(error: error)
+            return nil
         }
     }
 }

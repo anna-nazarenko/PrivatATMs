@@ -9,13 +9,12 @@ import UIKit
 
 class CashMachinesViewController: UITableViewController {
     
-    let cashMachines = ["One", "Two", "Three", "Four"]
-    
-    let networkManager = NetworkManager()
+    let networkManager = NetworkManager.shared
+    var cashMachines = [Device]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello")
+        networkManager.delegate = self
         networkManager.fetchCashMachines()
     }
     
@@ -27,8 +26,22 @@ class CashMachinesViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
-        cell.textLabel?.text = cashMachines[indexPath.row]
+        cell.textLabel?.text = cashMachines[indexPath.row].placeUa
         return cell
     }
+}
+
+//MARK: - Network Manager Delegate
+
+extension CashMachinesViewController: NetworkManagerDelegate {
+    func didUpdateData(_ networkManager: NetworkManager, data: [Device]) {
+        DispatchQueue.main.async {
+            self.cashMachines = data
+            self.tableView.reloadData()
+        }
+    }
     
+    func didFailWithError(error: Error) {
+        print(error)
+    }
 }
