@@ -11,7 +11,7 @@
 		4305DA9C279940C4007BCEE6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305DA9B279940C4007BCEE6 /* NetworkManager.swift */; };
 		4305DA9E27994D78007BCEE6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305DA9D27994D78007BCEE6 /* Device.swift */; };
 		430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430734CC27983FFA001A11BC /* ExchangeViewController.swift */; };
-		43458CB927980EB500A98ADE /* CashMachinesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* CashMachinesViewController.swift */; };
+		43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* DevicesViewController.swift */; };
 		43C9777F279E904A008778C9 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C9777E279E904A008778C9 /* Details.storyboard */; };
 		43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97780279E907A008778C9 /* DetailsViewController.swift */; };
 		43C97785279EB4EE008778C9 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97784279EB4EE008778C9 /* Schedule.swift */; };
@@ -28,7 +28,7 @@
 		4305DA9B279940C4007BCEE6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4305DA9D27994D78007BCEE6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		430734CC27983FFA001A11BC /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
-		43458CB827980EB500A98ADE /* CashMachinesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashMachinesViewController.swift; sourceTree = "<group>"; };
+		43458CB827980EB500A98ADE /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		43C9777E279E904A008778C9 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		43C97780279E907A008778C9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		43C97784279EB4EE008778C9 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				43F6642C279701DB008C7990 /* ViewController.swift */,
-				43458CB827980EB500A98ADE /* CashMachinesViewController.swift */,
+				43458CB827980EB500A98ADE /* DevicesViewController.swift */,
 				430734CC27983FFA001A11BC /* ExchangeViewController.swift */,
 				43C97780279E907A008778C9 /* DetailsViewController.swift */,
 			);
@@ -257,7 +257,7 @@
 				43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */,
 				43F66429279701DB008C7990 /* AppDelegate.swift in Sources */,
 				43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */,
-				43458CB927980EB500A98ADE /* CashMachinesViewController.swift in Sources */,
+				43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */,
 				4305DA9E27994D78007BCEE6 /* Device.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
