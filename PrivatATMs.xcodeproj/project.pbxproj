@@ -15,6 +15,8 @@
 		43C9777F279E904A008778C9 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C9777E279E904A008778C9 /* Details.storyboard */; };
 		43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97780279E907A008778C9 /* DetailsViewController.swift */; };
 		43C97785279EB4EE008778C9 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97784279EB4EE008778C9 /* Schedule.swift */; };
+		43C9778727A01400008778C9 /* WorkingHoursCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 43C9778627A01400008778C9 /* WorkingHoursCell.xib */; };
+		43C9778927A02518008778C9 /* WorkingHoursCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C9778827A02518008778C9 /* WorkingHoursCell.swift */; };
 		43F66429279701DB008C7990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F66428279701DB008C7990 /* AppDelegate.swift */; };
 		43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6642A279701DB008C7990 /* SceneDelegate.swift */; };
 		43F6642D279701DB008C7990 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6642C279701DB008C7990 /* ViewController.swift */; };
@@ -32,6 +34,8 @@
 		43C9777E279E904A008778C9 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		43C97780279E907A008778C9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		43C97784279EB4EE008778C9 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		43C9778627A01400008778C9 /* WorkingHoursCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WorkingHoursCell.xib; sourceTree = "<group>"; };
+		43C9778827A02518008778C9 /* WorkingHoursCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCell.swift; sourceTree = "<group>"; };
 		43F66425279701DB008C7990 /* PrivatATMs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrivatATMs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F66428279701DB008C7990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43F6642A279701DB008C7990 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,51 @@
 			path = Device;
 			sourceTree = "<group>";
 		};
+		43C9778A27A1574A008778C9 /* DevicesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43458CB827980EB500A98ADE /* DevicesViewController.swift */,
+				43F6642E279701DB008C7990 /* Main.storyboard */,
+			);
+			path = DevicesViewController;
+			sourceTree = "<group>";
+		};
+		43C9778B27A157B7008778C9 /* DetailsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				43C97780279E907A008778C9 /* DetailsViewController.swift */,
+				43C9777E279E904A008778C9 /* Details.storyboard */,
+				43C9778C27A157D7008778C9 /* Views */,
+			);
+			path = DetailsViewController;
+			sourceTree = "<group>";
+		};
+		43C9778C27A157D7008778C9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				43C9778D27A157E3008778C9 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		43C9778D27A157E3008778C9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				43C9778627A01400008778C9 /* WorkingHoursCell.xib */,
+				43C9778827A02518008778C9 /* WorkingHoursCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		43C9778E27A15895008778C9 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				43F6643C27970622008C7990 /* Models */,
+				43C97782279EB44E008778C9 /* NetworkManager */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		43F6641C279701DB008C7990 = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +143,8 @@
 		43F66427279701DB008C7990 /* PrivatATMs */ = {
 			isa = PBXGroup;
 			children = (
-				43C97782279EB44E008778C9 /* NetworkManager */,
-				43F6643C27970622008C7990 /* Models */,
-				43F6643D2797062A008C7990 /* View */,
-				43F6643E27970633008C7990 /* Controller */,
+				43C9778E27A15895008778C9 /* Networking */,
+				43F6643E27970633008C7990 /* ViewControllers */,
 				43F66428279701DB008C7990 /* AppDelegate.swift */,
 				43F6642A279701DB008C7990 /* SceneDelegate.swift */,
 				43F66431279701DB008C7990 /* Assets.xcassets */,
@@ -115,24 +162,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		43F6643D2797062A008C7990 /* View */ = {
+		43F6643E27970633008C7990 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				43F6642E279701DB008C7990 /* Main.storyboard */,
-				43C9777E279E904A008778C9 /* Details.storyboard */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		43F6643E27970633008C7990 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
+				43C9778B27A157B7008778C9 /* DetailsViewController */,
+				43C9778A27A1574A008778C9 /* DevicesViewController */,
 				43F6642C279701DB008C7990 /* ViewController.swift */,
-				43458CB827980EB500A98ADE /* DevicesViewController.swift */,
 				430734CC27983FFA001A11BC /* ExchangeViewController.swift */,
-				43C97780279E907A008778C9 /* DetailsViewController.swift */,
 			);
-			path = Controller;
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		5F61AFD91CC05CEE8A5B5B16 /* Pods */ = {
@@ -211,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43C9778727A01400008778C9 /* WorkingHoursCell.xib in Resources */,
 				43F66435279701DB008C7990 /* LaunchScreen.storyboard in Resources */,
 				43F66432279701DB008C7990 /* Assets.xcassets in Resources */,
 				43F66430279701DB008C7990 /* Main.storyboard in Resources */,
@@ -255,6 +294,7 @@
 				430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */,
 				43C97785279EB4EE008778C9 /* Schedule.swift in Sources */,
 				43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */,
+				43C9778927A02518008778C9 /* WorkingHoursCell.swift in Sources */,
 				43F66429279701DB008C7990 /* AppDelegate.swift in Sources */,
 				43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */,
 				43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */,

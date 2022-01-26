@@ -1,0 +1,6 @@
+module Pods_PrivatATMs {
+  umbrella header "Pods-PrivatATMs-umbrella.h"
+
+  export *
+  module * { export * }
+}
