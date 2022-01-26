@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 enum API {
     static let baseURL = "https://api.privatbank.ua/p24api/"

@@ -16,4 +16,7 @@ struct Schedule: Codable {
     let sat: String
     let sun: String
     let hol: String
+    var days: Int {
+        return 8
+    }
 }

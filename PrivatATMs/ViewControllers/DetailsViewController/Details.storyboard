@@ -16,26 +16,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb4-1c-sgd">
-                                <rect key="frame" x="20" y="74" width="374" height="55"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb4-1c-sgd">
+                                <rect key="frame" x="20" y="64" width="374" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="nfr-yV-gfg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Адреса">
+                                        <attributes>
+                                            <font key="NSFont" metaFont="system" size="16"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nf5-bR-Qnr">
-                                <rect key="frame" x="57" y="197" width="300" height="400"/>
+                                <rect key="frame" x="97" y="197" width="220" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="A5W-v9-NLv"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="NJS-G8-Nan"/>
-                                    <constraint firstAttribute="width" constant="300" id="Wx4-kj-9Zc"/>
-                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="400" id="fyS-FR-mUs"/>
-                                    <constraint firstAttribute="height" constant="400" id="iaj-2G-usD"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="yA7-Y6-DUI"/>
+                                    <constraint firstAttribute="width" constant="220" id="Wx4-kj-9Zc"/>
+                                    <constraint firstAttribute="height" constant="350" id="fyS-FR-mUs"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="B1W-pv-UQC"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="OHO-Lf-b6x"/>
+                                </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Графік роботи:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjZ-zd-XX9">
                                 <rect key="frame" x="130" y="149" width="154" height="28"/>
@@ -48,9 +54,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Nf5-bR-Qnr" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="7OC-ok-MYT"/>
-                            <constraint firstItem="lb4-1c-sgd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="30" id="AFM-0o-r2r"/>
+                            <constraint firstItem="lb4-1c-sgd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="AFM-0o-r2r"/>
                             <constraint firstItem="fjZ-zd-XX9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="AWF-BT-Ea9"/>
-                            <constraint firstItem="fjZ-zd-XX9" firstAttribute="top" secondItem="lb4-1c-sgd" secondAttribute="bottom" constant="20" id="Hyy-Uh-r44"/>
+                            <constraint firstItem="fjZ-zd-XX9" firstAttribute="top" secondItem="lb4-1c-sgd" secondAttribute="bottom" constant="30" id="Hyy-Uh-r44"/>
                             <constraint firstItem="lb4-1c-sgd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="r1r-Ym-B6v"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lb4-1c-sgd" secondAttribute="trailing" constant="20" id="y4K-5w-VEe"/>
                             <constraint firstItem="Nf5-bR-Qnr" firstAttribute="top" secondItem="fjZ-zd-XX9" secondAttribute="bottom" constant="20" id="z08-8y-1vQ"/>
@@ -58,6 +64,7 @@
                     </view>
                     <connections>
                         <outlet property="address" destination="lb4-1c-sgd" id="pxp-gF-xwm"/>
+                        <outlet property="tableView" destination="Nf5-bR-Qnr" id="esP-AL-1Rb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
