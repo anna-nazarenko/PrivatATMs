@@ -21,4 +21,10 @@ class WorkingHoursCell: UITableViewCell {
         dayOfWeek.text = day
         workingHours.text = hours
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        dayOfWeek.text = nil
+        workingHours.text = nil
+    }
 }
