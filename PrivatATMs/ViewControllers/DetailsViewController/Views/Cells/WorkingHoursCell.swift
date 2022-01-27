@@ -17,7 +17,8 @@ class WorkingHoursCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCell(day: String) {
+    func configureCell(day: String, hours: String) {
         dayOfWeek.text = day
+        workingHours.text = hours
     }
 }

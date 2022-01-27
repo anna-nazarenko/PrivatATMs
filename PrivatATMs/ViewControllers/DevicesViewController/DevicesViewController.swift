@@ -64,7 +64,7 @@ extension DevicesViewController: CashMachineViewControllerProtocol {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            detailsVC.deviceDetails = devices[indexPath.row]
+            detailsVC.device = devices[indexPath.row]
         }
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }

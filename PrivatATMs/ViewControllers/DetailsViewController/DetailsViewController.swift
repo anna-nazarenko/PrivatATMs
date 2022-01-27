@@ -12,9 +12,7 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
-    var deviceDetails: Device?
-    var daysOfWeek = [""]
-    var workingHours = [""]
+    var device: Device?
 
     
 //MARK: - ViewController Life Cycle
@@ -29,10 +27,8 @@ class DetailsViewController: UIViewController {
 //MARK: - Data Manipulation Methods
     
     func loadData() {
-        guard let deviceInfo = deviceDetails else { return }
+        guard let deviceInfo = device else { return }
         address.text = deviceInfo.fullAddressUa
-        daysOfWeek = ["Понеділок", "Вівторок", "Середа", "Четверг", "П'ятниця", "Субота", "Неділя", "Вихідні"]
-        workingHours = [deviceInfo.tw.mon, deviceInfo.tw.tue, deviceInfo.tw.wed, deviceInfo.tw.thu, deviceInfo.tw.fri, deviceInfo.tw.sat,deviceInfo.tw.sun, deviceInfo.tw.hol]
     }
 }
 
@@ -40,16 +36,16 @@ class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return deviceDetails?.tw.days ?? 0
+        return device?.tw.numberOfDays ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursCell", for: indexPath) as! WorkingHoursCell
         
-        cell.workingHours.text = workingHours[indexPath.row]
-        
-        cell.configureCell(day: daysOfWeek[indexPath.row])
-        
+        if let workingHoursInfo = device?.tw.getWorkingHoursByDay(indexPath.row) {
+            cell.configureCell(day: workingHoursInfo.day, hours: workingHoursInfo.hours)
+        }
+
         return cell
     }
 }
