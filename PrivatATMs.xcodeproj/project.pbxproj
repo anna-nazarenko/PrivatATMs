@@ -11,6 +11,7 @@
 		4305DA9C279940C4007BCEE6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305DA9B279940C4007BCEE6 /* NetworkManager.swift */; };
 		4305DA9E27994D78007BCEE6 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4305DA9D27994D78007BCEE6 /* Device.swift */; };
 		430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430734CC27983FFA001A11BC /* ExchangeViewController.swift */; };
+		433422DC27A3D4CD006995FD /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 433422DB27A3D4CD006995FD /* Exchange.storyboard */; };
 		43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* DevicesViewController.swift */; };
 		43C9777F279E904A008778C9 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C9777E279E904A008778C9 /* Details.storyboard */; };
 		43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97780279E907A008778C9 /* DetailsViewController.swift */; };
@@ -30,6 +31,7 @@
 		4305DA9B279940C4007BCEE6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4305DA9D27994D78007BCEE6 /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Device.swift; sourceTree = "<group>"; };
 		430734CC27983FFA001A11BC /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
+		433422DB27A3D4CD006995FD /* Exchange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 		43458CB827980EB500A98ADE /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		43C9777E279E904A008778C9 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		43C97780279E907A008778C9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		433422DD27A3DF55006995FD /* ExchangeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				430734CC27983FFA001A11BC /* ExchangeViewController.swift */,
+				433422DB27A3D4CD006995FD /* Exchange.storyboard */,
+			);
+			path = ExchangeViewController;
+			sourceTree = "<group>";
+		};
 		43C97782279EB44E008778C9 /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,9 +177,9 @@
 			isa = PBXGroup;
 			children = (
 				43F6642C279701DB008C7990 /* ViewController.swift */,
-				430734CC27983FFA001A11BC /* ExchangeViewController.swift */,
-				43C9778B27A157B7008778C9 /* DetailsViewController */,
 				43C9778A27A1574A008778C9 /* DevicesViewController */,
+				433422DD27A3DF55006995FD /* ExchangeViewController */,
+				43C9778B27A157B7008778C9 /* DetailsViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -254,6 +265,7 @@
 				43F66432279701DB008C7990 /* Assets.xcassets in Resources */,
 				43F66430279701DB008C7990 /* Main.storyboard in Resources */,
 				43C9777F279E904A008778C9 /* Details.storyboard in Resources */,
+				433422DC27A3D4CD006995FD /* Exchange.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
