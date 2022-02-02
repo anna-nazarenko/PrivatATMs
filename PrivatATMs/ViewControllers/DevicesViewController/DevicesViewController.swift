@@ -13,7 +13,7 @@ protocol CashMachineViewControllerProtocol {
 
 class DevicesViewController: UITableViewController {
     let networkManager = NetworkManager.shared
-    private var devices = [Device]()
+    private var result: Result?
     
 //MARK: - ViewController Life Cycle
     
@@ -28,12 +28,12 @@ class DevicesViewController: UITableViewController {
 
 extension DevicesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return devices.count
+        return result?.devices.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
-        cell.textLabel?.text = devices[indexPath.row].placeUa
+        cell.textLabel?.text = result?.devices[indexPath.row].placeUa
         return cell
     }
     
@@ -47,9 +47,9 @@ extension DevicesViewController {
 //MARK: - Network Manager Delegate Methods
 
 extension DevicesViewController: NetworkManagerDelegate {
-    func didUpdateData(_ networkManager: NetworkManager, data: [Device]) {
+    func didUpdateData(_ networkManager: NetworkManager, data: Result) {
         DispatchQueue.main.async {
-            self.devices = data
+            self.result = data
             self.tableView.reloadData()
         }
     }
@@ -64,7 +64,7 @@ extension DevicesViewController: CashMachineViewControllerProtocol {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            detailsVC.device = devices[indexPath.row]
+            detailsVC.device = result?.devices[indexPath.row]
         }
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }

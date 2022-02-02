@@ -6,20 +6,21 @@
 //
 
 import Foundation
+import Alamofire
 
 enum API {
     static let baseURL = "https://api.privatbank.ua/p24api/"
 }
 
 protocol NetworkManagerDelegate: AnyObject {
-    func didUpdateData(_ networkManager: NetworkManager, data: [Device])
+    func didUpdateData(_ networkManager: NetworkManager, data: Result)
     func didFailWithError(error: Error)
 }
 
 class NetworkManager {
     static let shared = NetworkManager(baseURL: API.baseURL)
     let baseUrl: String
-    var devices: [Device]?
+    var preSavedDevices: Result?
     weak var delegate: NetworkManagerDelegate?
 
     private init(baseURL: String) {
@@ -27,41 +28,37 @@ class NetworkManager {
     }
     
     func fetchCashMachines() {
-        let stringURL = "\(baseUrl)infrastructure?json&tso&address=&city=Львів".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        let stringURL = "\(baseUrl)infrastructure?json&tso&city=Львів".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
+        performRequest(with: stringURL)
+    }
+    
+    func fetchCashMachine(cityName: String) {
+        let stringURL = "\(baseUrl)infrastructure?json&tso&city=\(cityName)".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
         performRequest(with: stringURL)
     }
     
     func performRequest(with urlString: String) {
-        guard let url = URL(string: urlString) else {
-            print("Error with constructing URL")
-            return
-        }
-        
-        let session = URLSession(configuration: .default)
-        let task = session.dataTask(with: url) { data, responce, error in
-            if error != nil {
-                self.delegate?.didFailWithError(error: error!)
-                return
+        AF.request(urlString)
+            .validate()
+            .responseDecodable(of: Result.self, decoder: JSONDecoder()) { response in
+                switch response.result {
+                case .success:
+                    guard let resultData = response.value else { return }
+                    self.delegate?.didUpdateData(self, data: resultData)
+                    if self.preSavedDevices == nil { self.preSavedDevices = resultData }
+                case .failure:
+                    if let code = response.response?.statusCode {
+                        NSLog("Received response: \(code) \(HTTPURLResponse.localizedString(forStatusCode: code))")
+                    }
+                }
             }
-            
-            if let safeData = data, let results = self.parseJSON(safeData) {
-                self.delegate?.didUpdateData(self, data: results)
-            }
-        }
-        
-        task.resume()
     }
     
-    func parseJSON(_ resultData: Data) -> [Device]? {
-        let decoder = JSONDecoder()
-        do {
-            let decodedData = try decoder.decode(Result.self, from: resultData)
-            self.devices = decodedData.devices
-            return devices
-            
-        } catch {
-            delegate?.didFailWithError(error: error)
-            return nil
-        }
+    func cancelRequest() {
+        Alamofire.Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
+                    dataTasks.forEach { $0.cancel() }
+                    uploadTasks.forEach { $0.cancel() }
+                    downloadTasks.forEach { $0.cancel() }
+                })
     }
 }
