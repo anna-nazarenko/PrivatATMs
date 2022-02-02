@@ -17,9 +17,9 @@ class WorkingHoursCell: UITableViewCell {
         // Initialization code
     }
     
-    func configureCell(day: String, hours: String) {
-        dayOfWeek.text = day
-        workingHours.text = hours
+    func configureCell(workingHoursByDay: Schedule.WorkingHoursByDay) {
+        dayOfWeek.text = workingHoursByDay.day
+        workingHours.text = workingHoursByDay.hours
     }
     
     override func prepareForReuse() {

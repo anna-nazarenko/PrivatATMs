@@ -43,7 +43,7 @@ extension DetailsViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursCell", for: indexPath) as! WorkingHoursCell
         
         if let workingHoursInfo = device?.tw.getWorkingHoursByDay(indexPath.row) {
-            cell.configureCell(day: workingHoursInfo.day, hours: workingHoursInfo.hours)
+            cell.configureCell(workingHoursByDay: workingHoursInfo)
         }
 
         return cell

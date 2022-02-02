@@ -16,7 +16,9 @@ struct Schedule: Codable {
     let sat: String
     let sun: String
     let hol: String
-    
+}
+
+extension Schedule {
     var numberOfDays: Int {
         return Day.allCases.count
     }
