@@ -69,3 +69,30 @@ extension DevicesViewController: CashMachineViewControllerProtocol {
         self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }
+
+//MARK: - Search Bar Delegate Methods
+
+extension DevicesViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchBarText = searchBar.text, !searchBarText.isEmpty else { return }
+        networkManager.fetchCashMachine(cityName: searchBarText)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let searchBarText = searchBar.text else { return }
+
+        if searchBarText.count < 3 {
+            networkManager.cancelRequest()
+            if let preSavedDevices = networkManager.preSavedDevices {
+                didUpdateData(networkManager, data: preSavedDevices)
+            }
+            
+        } else {
+            networkManager.fetchCashMachine(cityName: searchBarText)
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+}
