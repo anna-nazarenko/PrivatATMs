@@ -7,20 +7,23 @@
 
 import UIKit
 
-protocol CashMachineViewControllerProtocol {
+protocol DevicesViewControllerProtocol {
     func pushDetailsVC()
+    func reloadData()
+    func showSpinner()
+    func hideSpinner()
 }
 
 class DevicesViewController: UITableViewController {
-    let networkManager = NetworkManager.shared
-    private var result: Result?
+    
+    private let devicesPresenter = DevicesPresenter()
     
 //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkManager.delegate = self
-        networkManager.fetchCashMachines()
+        self.devicesPresenter.setDevicesViewController(self)
+        self.devicesPresenter.getDevices()
     }
 }
 
@@ -28,12 +31,14 @@ class DevicesViewController: UITableViewController {
 
 extension DevicesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return result?.devices.count ?? 0
+        return self.devicesPresenter.devices?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
-        cell.textLabel?.text = result?.devices[indexPath.row].placeUa
+        if let devices = self.devicesPresenter.devices {
+            cell.textLabel?.text = devices[indexPath.row].placeUa
+        }
         return cell
     }
     
@@ -44,55 +49,54 @@ extension DevicesViewController {
     }
 }
 
-//MARK: - Network Manager Delegate Methods
-
-extension DevicesViewController: NetworkManagerDelegate {
-    func didUpdateData(_ networkManager: NetworkManager, data: Result) {
-        DispatchQueue.main.async {
-            self.result = data
-            self.tableView.reloadData()
-        }
-    }
-    
-    func didFailWithError(error: Error) {
-        print(error)
-    }
-}
-
-extension DevicesViewController: CashMachineViewControllerProtocol {
-    func pushDetailsVC() {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let detailsVC = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
-        if let indexPath = tableView.indexPathForSelectedRow {
-            detailsVC.device = result?.devices[indexPath.row]
-        }
-        self.navigationController?.pushViewController(detailsVC, animated: true)
-    }
-}
-
 //MARK: - Search Bar Delegate Methods
 
 extension DevicesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchBarText = searchBar.text, !searchBarText.isEmpty else { return }
-        networkManager.fetchCashMachine(cityName: searchBarText)
+        
+        if let searchBarText = searchBar.text, !searchBarText.isEmpty {
+            devicesPresenter.getDevices(byCity: searchBarText)
+        }
+        searchBar.resignFirstResponder()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         guard let searchBarText = searchBar.text else { return }
 
         if searchBarText.count < 3 {
-            networkManager.cancelRequest()
-            if let preSavedDevices = networkManager.preSavedDevices {
-                didUpdateData(networkManager, data: preSavedDevices)
-            }
-            
+            self.devicesPresenter.updateTableViewWithPreSavedDevices()
         } else {
-            networkManager.fetchCashMachine(cityName: searchBarText)
+            self.devicesPresenter.cancelRequest()
+            self.devicesPresenter.getDevices(byCity: searchBarText)
         }
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
+    }
+}
+
+//MARK: - Devices View Controller Protocol
+
+extension DevicesViewController: DevicesViewControllerProtocol {
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
+    func showSpinner() {
+        self.addActivityIndicator()
+    }
+    
+    func hideSpinner() {
+        self.removeActivityIndicator()
+    }
+    
+    func pushDetailsVC() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailsVC = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
+        if let indexPath = tableView.indexPathForSelectedRow, let devices = self.devicesPresenter.devices {
+            detailsVC.device = devices[indexPath.row]
+        }
+        self.navigationController?.pushViewController(detailsVC, animated: true)
     }
 }

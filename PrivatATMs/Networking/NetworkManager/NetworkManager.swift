@@ -7,21 +7,22 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 enum API {
     static let baseURL = "https://api.privatbank.ua/p24api/"
 }
 
 protocol NetworkManagerDelegate: AnyObject {
-    func didUpdateData(_ networkManager: NetworkManager, data: Result)
-    func didFailWithError(error: Error)
+    func didUpdateData(_ networkManager: NetworkManager, data: [Device])
+    func didFailWithError(message: String)
 }
 
 class NetworkManager {
     static let shared = NetworkManager(baseURL: API.baseURL)
     let baseUrl: String
-    var preSavedDevices: Result?
     weak var delegate: NetworkManagerDelegate?
+    var request: DataRequest?
 
     private init(baseURL: String) {
         self.baseUrl = baseURL
@@ -38,27 +39,25 @@ class NetworkManager {
     }
     
     func performRequest(with urlString: String) {
-        AF.request(urlString)
+        request = AF.request(urlString)
             .validate()
             .responseDecodable(of: Result.self, decoder: JSONDecoder()) { response in
+                
                 switch response.result {
                 case .success:
                     guard let resultData = response.value else { return }
-                    self.delegate?.didUpdateData(self, data: resultData)
-                    if self.preSavedDevices == nil { self.preSavedDevices = resultData }
+                    self.delegate?.didUpdateData(self, data: resultData.devices)
                 case .failure:
                     if let code = response.response?.statusCode {
-                        NSLog("Received response: \(code) \(HTTPURLResponse.localizedString(forStatusCode: code))")
+                        let errorString = "Received response: \(code) \(HTTPURLResponse.localizedString(forStatusCode: code))"
+                        self.delegate?.didFailWithError(message: errorString)
+                        
                     }
                 }
             }
     }
     
     func cancelRequest() {
-        Alamofire.Session.default.session.getTasksWithCompletionHandler({ dataTasks, uploadTasks, downloadTasks in
-                    dataTasks.forEach { $0.cancel() }
-                    uploadTasks.forEach { $0.cancel() }
-                    downloadTasks.forEach { $0.cancel() }
-                })
+        request?.cancel()
     }
 }
