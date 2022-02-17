@@ -6,24 +6,41 @@
 //
 
 import Foundation
+import RealmSwift
 
 struct Result: Codable {
     let devices: [Device]
 }
 
-struct Device: Codable {
-    let type: String
-    let cityRU: String
-    let cityUA: String
+protocol PrimaryKeyProtocol {
+    var deviceID: ObjectId { get }
+    func primaryKey() -> String?
+}
+
+class Device: Object, Codable {
+
+    @Persisted var type: String
+    @Persisted var cityRU: String
+    @Persisted var cityUA: String
     let cityEN: CityEn
-    let fullAddressRu: String
-    let fullAddressUa: String
-    let fullAddressEn: String?
-    let placeRu: String
-    let placeUa: String
-    let latitude: String
-    let longitude: String
-    let tw: Schedule
+    @Persisted var fullAddressRu: String
+    @Persisted var fullAddressUa: String
+    @Persisted var fullAddressEn: String?
+    @Persisted var placeRu: String
+    @Persisted var placeUa: String
+    @Persisted var latitude: String
+    @Persisted var longitude: String
+    @Persisted var tw: Schedule?
+}
+
+extension Device: PrimaryKeyProtocol {
+    var deviceID: ObjectId {
+        return ObjectId.generate()
+    }
+    
+    func primaryKey() -> String? {
+        return "deviceID"
+    }
 }
 
 enum CityEn: Codable {

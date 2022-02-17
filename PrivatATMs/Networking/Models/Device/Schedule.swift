@@ -6,16 +6,17 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Schedule: Codable {
-    let mon: String
-    let tue: String
-    let wed: String
-    let thu: String
-    let fri: String
-    let sat: String
-    let sun: String
-    let hol: String
+class Schedule: Object, Codable {
+    @Persisted var mon: String
+    @Persisted var tue: String
+    @Persisted var wed: String
+    @Persisted var thu: String
+    @Persisted var fri: String
+    @Persisted var sat: String
+    @Persisted var sun: String
+    @Persisted var hol: String
 }
 
 extension Schedule {
