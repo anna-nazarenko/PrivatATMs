@@ -36,13 +36,13 @@ class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return device?.tw.numberOfDays ?? 0
+        return device?.tw?.numberOfDays ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursCell", for: indexPath) as! WorkingHoursCell
-        
-        if let workingHoursInfo = device?.tw.getWorkingHoursByDay(indexPath.row) {
+
+        if let workingHoursInfo = device?.tw?.getWorkingHoursByDay(indexPath.row) {
             cell.configureCell(workingHoursByDay: workingHoursInfo)
         }
 
