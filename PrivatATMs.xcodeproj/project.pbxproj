@@ -16,6 +16,10 @@
 		4336AB0527B3EBE30004C1C6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */; };
 		43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* DevicesViewController.swift */; };
 		435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435A19D827B6798400E5D7C6 /* DatabaseManager.swift */; };
+		43A3139827BA43F10010566A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139727BA43F10010566A /* Realm */; };
+		43A3139A27BA43F10010566A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139927BA43F10010566A /* RealmSwift */; };
+		43A3139C27BE94810010566A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3139B27BE94810010566A /* RealmManager.swift */; };
+		43A3139E27BE98920010566A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3139D27BE98920010566A /* CoreDataManager.swift */; };
 		43C9777F279E904A008778C9 /* Details.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43C9777E279E904A008778C9 /* Details.storyboard */; };
 		43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97780279E907A008778C9 /* DetailsViewController.swift */; };
 		43C97785279EB4EE008778C9 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C97784279EB4EE008778C9 /* Schedule.swift */; };
@@ -39,6 +43,8 @@
 		4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		43458CB827980EB500A98ADE /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		435A19D827B6798400E5D7C6 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		43A3139B27BE94810010566A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		43A3139D27BE98920010566A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		43C9777E279E904A008778C9 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
 		43C97780279E907A008778C9 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		43C97784279EB4EE008778C9 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -61,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43A3139A27BA43F10010566A /* RealmSwift in Frameworks */,
+				43A3139827BA43F10010566A /* Realm in Frameworks */,
 				37B905049013FD9969BC9B02 /* libPods-PrivatATMs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +97,8 @@
 			isa = PBXGroup;
 			children = (
 				435A19D827B6798400E5D7C6 /* DatabaseManager.swift */,
+				43A3139B27BE94810010566A /* RealmManager.swift */,
+				43A3139D27BE98920010566A /* CoreDataManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -243,6 +253,10 @@
 			dependencies = (
 			);
 			name = PrivatATMs;
+			packageProductDependencies = (
+				43A3139727BA43F10010566A /* Realm */,
+				43A3139927BA43F10010566A /* RealmSwift */,
+			);
 			productName = PrivatATMs;
 			productReference = 43F66425279701DB008C7990 /* PrivatATMs.app */;
 			productType = "com.apple.product-type.application";
@@ -271,6 +285,9 @@
 				Base,
 			);
 			mainGroup = 43F6641C279701DB008C7990;
+			packageReferences = (
+				43A3139627BA43F10010566A /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = 43F66426279701DB008C7990 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -329,8 +346,10 @@
 				4305DA9C279940C4007BCEE6 /* NetworkManager.swift in Sources */,
 				43F6642D279701DB008C7990 /* ViewController.swift in Sources */,
 				430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */,
+				43A3139E27BE98920010566A /* CoreDataManager.swift in Sources */,
 				43C97785279EB4EE008778C9 /* Schedule.swift in Sources */,
 				4334040227B14EC7009CD616 /* DevicesPresenter.swift in Sources */,
+				43A3139C27BE94810010566A /* RealmManager.swift in Sources */,
 				43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */,
 				435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */,
 				43C9778927A02518008778C9 /* WorkingHoursCell.swift in Sources */,
@@ -560,6 +579,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		43A3139627BA43F10010566A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		43A3139727BA43F10010566A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43A3139627BA43F10010566A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		43A3139927BA43F10010566A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43A3139627BA43F10010566A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 43F6641D279701DB008C7990 /* Project object */;
 }

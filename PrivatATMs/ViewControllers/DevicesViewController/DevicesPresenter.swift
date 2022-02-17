@@ -21,12 +21,15 @@ class DevicesPresenter {
 //MARK: - Properties
     
     private let networkManager = NetworkManager.shared
+//    private let dbManager = DatabaseManager.shared
+    private let dbManager = RealmManager()
     private var viewController: DevicesViewControllerProtocol?
     var devices: [Device]?
     var preSavedDevices: [Device]?
     
-    init() {
+    init(_ viewController: DevicesViewControllerProtocol) {
         networkManager.delegate = self
+        self.viewController = viewController
     }
     
     func setDevicesViewController(_ viewController: DevicesViewControllerProtocol) {
@@ -49,13 +52,15 @@ extension DevicesPresenter: DevicesPresenterProtocol {
     
     func updateTableViewWithPreSavedDevices() {
         guard let preSavedDevices = preSavedDevices else {
-            getDevices()
+            self.preSavedDevices = Array(self.dbManager.getDeviceObjects())
             return
         }
+        
         didUpdateData(networkManager, data: preSavedDevices)
     }
     
     func cancelRequest() {
+        viewController?.hideSpinner()
         networkManager.cancelRequest()
     }
 }
@@ -68,7 +73,11 @@ extension DevicesPresenter: NetworkManagerDelegate {
         DispatchQueue.main.async {
             self.viewController?.hideSpinner()
             self.devices = data
-            if self.preSavedDevices == nil { self.preSavedDevices = data }
+
+            if self.dbManager.getDeviceObjects().isEmpty {
+                self.dbManager.save(data)
+            }
+            
             self.viewController?.reloadData()
         }
     }

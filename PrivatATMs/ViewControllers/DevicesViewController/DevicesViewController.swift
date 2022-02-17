@@ -16,14 +16,15 @@ protocol DevicesViewControllerProtocol {
 
 class DevicesViewController: UITableViewController {
     
-    private let devicesPresenter = DevicesPresenter()
+    private var devicesPresenter: DevicesPresenterProtocol?
+    
     
 //MARK: - ViewController Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.devicesPresenter.setDevicesViewController(self)
-        self.devicesPresenter.getDevices()
+        devicesPresenter = DevicesPresenter(self)
+        self.devicesPresenter?.getDevices()
     }
 }
 
@@ -31,12 +32,12 @@ class DevicesViewController: UITableViewController {
 
 extension DevicesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.devicesPresenter.devices?.count ?? 0
+        return self.devicesPresenter?.devices?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
-        if let devices = self.devicesPresenter.devices {
+        if let devices = self.devicesPresenter?.devices {
             cell.textLabel?.text = devices[indexPath.row].placeUa
         }
         return cell
@@ -55,7 +56,7 @@ extension DevicesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         if let searchBarText = searchBar.text, !searchBarText.isEmpty {
-            devicesPresenter.getDevices(byCity: searchBarText)
+            devicesPresenter?.getDevices(byCity: searchBarText)
         }
         searchBar.resignFirstResponder()
     }
@@ -64,10 +65,10 @@ extension DevicesViewController: UISearchBarDelegate {
         guard let searchBarText = searchBar.text else { return }
 
         if searchBarText.count < 3 {
-            self.devicesPresenter.updateTableViewWithPreSavedDevices()
+            self.devicesPresenter?.updateTableViewWithPreSavedDevices()
         } else {
-            self.devicesPresenter.cancelRequest()
-            self.devicesPresenter.getDevices(byCity: searchBarText)
+            self.devicesPresenter?.cancelRequest()
+            self.devicesPresenter?.getDevices(byCity: searchBarText)
         }
     }
     
@@ -94,7 +95,7 @@ extension DevicesViewController: DevicesViewControllerProtocol {
     func pushDetailsVC() {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailsVC = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
-        if let indexPath = tableView.indexPathForSelectedRow, let devices = self.devicesPresenter.devices {
+        if let indexPath = tableView.indexPathForSelectedRow, let devices = self.devicesPresenter?.devices {
             detailsVC.device = devices[indexPath.row]
         }
         self.navigationController?.pushViewController(detailsVC, animated: true)
