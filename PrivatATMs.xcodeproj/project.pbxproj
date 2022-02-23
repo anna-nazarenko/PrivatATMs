@@ -16,6 +16,8 @@
 		4336AB0527B3EBE30004C1C6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */; };
 		43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* DevicesViewController.swift */; };
 		435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435A19D827B6798400E5D7C6 /* DatabaseManager.swift */; };
+		4380A44327BFACAA004E28F3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44227BFACAA004E28F3 /* String+Extensions.swift */; };
+		4380A44527C3D3E5004E28F3 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44427C3D3E5004E28F3 /* ExchangeView.swift */; };
 		43A3139827BA43F10010566A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139727BA43F10010566A /* Realm */; };
 		43A3139A27BA43F10010566A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139927BA43F10010566A /* RealmSwift */; };
 		43A3139C27BE94810010566A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3139B27BE94810010566A /* RealmManager.swift */; };
@@ -43,6 +45,8 @@
 		4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		43458CB827980EB500A98ADE /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		435A19D827B6798400E5D7C6 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		4380A44227BFACAA004E28F3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		4380A44427C3D3E5004E28F3 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 		43A3139B27BE94810010566A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		43A3139D27BE98920010566A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		43C9777E279E904A008778C9 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				430734CC27983FFA001A11BC /* ExchangeViewController.swift */,
+				4380A44427C3D3E5004E28F3 /* ExchangeView.swift */,
 				433422DB27A3D4CD006995FD /* Exchange.storyboard */,
 			);
 			path = ExchangeViewController;
@@ -89,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */,
+				4380A44227BFACAA004E28F3 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -347,6 +353,7 @@
 				43F6642D279701DB008C7990 /* ViewController.swift in Sources */,
 				430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */,
 				43A3139E27BE98920010566A /* CoreDataManager.swift in Sources */,
+				4380A44327BFACAA004E28F3 /* String+Extensions.swift in Sources */,
 				43C97785279EB4EE008778C9 /* Schedule.swift in Sources */,
 				4334040227B14EC7009CD616 /* DevicesPresenter.swift in Sources */,
 				43A3139C27BE94810010566A /* RealmManager.swift in Sources */,
@@ -354,6 +361,7 @@
 				435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */,
 				43C9778927A02518008778C9 /* WorkingHoursCell.swift in Sources */,
 				43F66429279701DB008C7990 /* AppDelegate.swift in Sources */,
+				4380A44527C3D3E5004E28F3 /* ExchangeView.swift in Sources */,
 				4336AB0527B3EBE30004C1C6 /* UIViewController+Extensions.swift in Sources */,
 				43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */,
 				43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */,
