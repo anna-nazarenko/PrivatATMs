@@ -8,21 +8,15 @@
 import Foundation
 import RealmSwift
 
-protocol DatabaseManagerOperations {
-    func save(_ objects: [Object])
-    func delete(_ object: Object)
-    func deleteAll()
-    func realmDevicesIsEmpty() -> Bool
-    func getDeviceObjects() -> Results<Device>
-}
 
-class RealmManager: DatabaseManagerOperations {
+class RealmManager {
+    
     let realm = try! Realm()
     
     func save(_ objects: [Object]) {
         do {
             try self.realm.write {
-                realm.add(objects, update: .all)
+                self.realm.add(objects)
             }
             
         } catch {
@@ -30,31 +24,17 @@ class RealmManager: DatabaseManagerOperations {
         }
     }
     
-    func delete(_ object: Object) {
-        do {
-            try realm.write {
-                realm.delete(object)
-            }
-        } catch {
-            print("Error deleting Realm Object: \(error)")
-        }
-    }
-    
     func deleteAll() {
         do {
             try self.realm.write {
-                realm.deleteAll()
+                self.realm.deleteAll()
             }
         } catch {
             print("Error deleting all data from Realm: \(error)")
         }
     }
     
-    func realmDevicesIsEmpty() -> Bool {
-        return getDeviceObjects().isEmpty
-    }
-    
     func getDeviceObjects() -> Results<Device> {
-        return realm.objects(Device.self)
+        return self.realm.objects(Device.self)
     }
 }

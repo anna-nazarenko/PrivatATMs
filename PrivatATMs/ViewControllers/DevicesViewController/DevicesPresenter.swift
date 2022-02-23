@@ -21,14 +21,13 @@ class DevicesPresenter {
 //MARK: - Properties
     
     private let networkManager = NetworkManager.shared
-//    private let dbManager = DatabaseManager.shared
-    private let dbManager = RealmManager()
+    private let dbManager = DatabaseManager.shared
     private var viewController: DevicesViewControllerProtocol?
     var devices: [Device]?
     var preSavedDevices: [Device]?
     
     init(_ viewController: DevicesViewControllerProtocol) {
-        networkManager.delegate = self
+        self.networkManager.delegate = self
         self.viewController = viewController
     }
     
@@ -41,13 +40,13 @@ class DevicesPresenter {
 
 extension DevicesPresenter: DevicesPresenterProtocol {
     func getDevices() {
-        viewController?.showSpinner()
-        networkManager.fetchCashMachines()
+        self.viewController?.showSpinner()
+        self.networkManager.fetchCashMachines()
     }
     
     func getDevices(byCity: String) {
-        viewController?.showSpinner()
-        networkManager.fetchCashMachine(cityName: byCity)
+        self.viewController?.showSpinner()
+        self.networkManager.fetchCashMachine(cityName: byCity)
     }
     
     func updateTableViewWithPreSavedDevices() {
@@ -56,12 +55,12 @@ extension DevicesPresenter: DevicesPresenterProtocol {
             return
         }
         
-        didUpdateData(networkManager, data: preSavedDevices)
+        didUpdateData(data: preSavedDevices, isInitiaRequest: false)
     }
     
     func cancelRequest() {
-        viewController?.hideSpinner()
-        networkManager.cancelRequest()
+        self.viewController?.hideSpinner()
+        self.networkManager.cancelRequest()
     }
 }
 
@@ -69,21 +68,20 @@ extension DevicesPresenter: DevicesPresenterProtocol {
 
 extension DevicesPresenter: NetworkManagerDelegate {
     
-    func didUpdateData(_ networkManager: NetworkManager, data: [Device]) {
-        DispatchQueue.main.async {
-            self.viewController?.hideSpinner()
-            self.devices = data
+    func didUpdateData(data: [Device], isInitiaRequest: Bool) {
+        self.viewController?.hideSpinner()
+        self.devices = data
 
-            if self.dbManager.getDeviceObjects().isEmpty {
-                self.dbManager.save(data)
-            }
-            
-            self.viewController?.reloadData()
+        if isInitiaRequest {
+            self.dbManager.deleteAll()
+            self.dbManager.save(data)
         }
+        
+        self.viewController?.reloadData()
     }
 
     func didFailWithError(message: String) {
-        viewController?.hideSpinner()
+        self.viewController?.hideSpinner()
         print(message)
     }
 }
