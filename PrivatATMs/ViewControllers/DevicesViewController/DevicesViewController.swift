@@ -23,7 +23,7 @@ class DevicesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        devicesPresenter = DevicesPresenter(self)
+        self.devicesPresenter = DevicesPresenter(self)
         self.devicesPresenter?.getDevices()
     }
 }
@@ -56,7 +56,7 @@ extension DevicesViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         if let searchBarText = searchBar.text, !searchBarText.isEmpty {
-            devicesPresenter?.getDevices(byCity: searchBarText)
+            self.devicesPresenter?.getDevices(byCity: searchBarText)
         }
         searchBar.resignFirstResponder()
     }
@@ -81,7 +81,7 @@ extension DevicesViewController: UISearchBarDelegate {
 
 extension DevicesViewController: DevicesViewControllerProtocol {
     func reloadData() {
-        tableView.reloadData()
+        self.tableView.reloadData()
     }
     
     func showSpinner() {

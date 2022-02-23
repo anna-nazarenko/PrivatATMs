@@ -20,15 +20,15 @@ class DetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "WorkingHoursCell", bundle: nil), forCellReuseIdentifier: "WorkingHoursCell")
+        self.tableView.dataSource = self
+        self.tableView.register(UINib(nibName: "WorkingHoursCell", bundle: nil), forCellReuseIdentifier: "WorkingHoursCell")
     }
     
 //MARK: - Data Manipulation Methods
     
     func loadData() {
-        guard let deviceInfo = device else { return }
-        address.text = deviceInfo.fullAddressUa
+        guard let deviceInfo = self.device else { return }
+        self.address.text = deviceInfo.fullAddressUa
     }
 }
 
@@ -36,13 +36,13 @@ class DetailsViewController: UIViewController {
 
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return device?.tw?.numberOfDays ?? 0
+        return self.device?.tw?.numberOfDays ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkingHoursCell", for: indexPath) as! WorkingHoursCell
 
-        if let workingHoursInfo = device?.tw?.getWorkingHoursByDay(indexPath.row) {
+        if let workingHoursInfo = self.device?.tw?.getWorkingHoursByDay(indexPath.row) {
             cell.configureCell(workingHoursByDay: workingHoursInfo)
         }
 

@@ -12,11 +12,6 @@ struct Result: Codable {
     let devices: [Device]
 }
 
-protocol PrimaryKeyProtocol {
-    var deviceID: ObjectId { get }
-    func primaryKey() -> String?
-}
-
 class Device: Object, Codable {
 
     @Persisted var type: String
@@ -31,16 +26,6 @@ class Device: Object, Codable {
     @Persisted var latitude: String
     @Persisted var longitude: String
     @Persisted var tw: Schedule?
-}
-
-extension Device: PrimaryKeyProtocol {
-    var deviceID: ObjectId {
-        return ObjectId.generate()
-    }
-    
-    func primaryKey() -> String? {
-        return "deviceID"
-    }
 }
 
 enum CityEn: Codable {
