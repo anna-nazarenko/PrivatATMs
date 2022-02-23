@@ -9,55 +9,70 @@ import Foundation
 import Alamofire
 import UIKit
 
-enum API {
-    static let baseURL = "https://api.privatbank.ua/p24api/"
+enum API: String {
+    case baseURL = "https://api.privatbank.ua/p24api/"
+    case cityPath = "infrastructure?json&tso&city="
+    case bankCurrencyPath = "pubinfo?json&exchange&coursid=5"
+    case privat24CurrencyPath = "pubinfo?exchange&json&coursid=11"
+}
+
+enum DefaultCities: String {
+    case cityLviv = "Львів"
 }
 
 protocol NetworkManagerDelegate: AnyObject {
-    func didUpdateData(_ networkManager: NetworkManager, data: [Device])
+    func didUpdateData(data: [Device], isInitiaRequest: Bool)
     func didFailWithError(message: String)
 }
 
 class NetworkManager {
-    static let shared = NetworkManager(baseURL: API.baseURL)
-    let baseUrl: String
+    static let shared = NetworkManager()
     weak var delegate: NetworkManagerDelegate?
     var request: DataRequest?
 
-    private init(baseURL: String) {
-        self.baseUrl = baseURL
-    }
+    private init() {}
     
     func fetchCashMachines() {
-        let stringURL = "\(baseUrl)infrastructure?json&tso&city=Львів".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        performRequest(with: stringURL)
+        guard let stringURL = "\(API.baseURL.rawValue)\(API.cityPath.rawValue)\(DefaultCities.cityLviv.rawValue)".percentEncode() else { return }
+        performRequest(with: stringURL, isInitiaRequest: true)
     }
     
     func fetchCashMachine(cityName: String) {
-        let stringURL = "\(baseUrl)infrastructure?json&tso&city=\(cityName)".addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)!
-        performRequest(with: stringURL)
+        guard let stringURL = "\(API.baseURL.rawValue)\(API.cityPath.rawValue)\(cityName)".percentEncode() else { return }
+        performRequest(with: stringURL, isInitiaRequest: false)
     }
     
-    func performRequest(with urlString: String) {
+    func fetchBankCurrency() {
+        let stringURL = "\(API.baseURL.rawValue)\(API.bankCurrencyPath.rawValue)"
+        performRequest(with: stringURL, isInitiaRequest: false)
+    }
+    
+    func fetchPrivat24Currency() {
+        let stringURL = "\(API.baseURL.rawValue)\(API.privat24CurrencyPath.rawValue)"
+        performRequest(with: stringURL, isInitiaRequest: false)
+    }
+    
+    func performRequest(with urlString: String, isInitiaRequest: Bool) {
         request = AF.request(urlString)
             .validate()
             .responseDecodable(of: Result.self, decoder: JSONDecoder()) { response in
                 
                 switch response.result {
+                    
                 case .success:
                     guard let resultData = response.value else { return }
-                    self.delegate?.didUpdateData(self, data: resultData.devices)
+                    self.delegate?.didUpdateData(data: resultData.devices, isInitiaRequest: isInitiaRequest)
+                    
                 case .failure:
                     if let code = response.response?.statusCode {
                         let errorString = "Received response: \(code) \(HTTPURLResponse.localizedString(forStatusCode: code))"
                         self.delegate?.didFailWithError(message: errorString)
-                        
                     }
                 }
             }
     }
     
     func cancelRequest() {
-        request?.cancel()
+        self.request?.cancel()
     }
 }
