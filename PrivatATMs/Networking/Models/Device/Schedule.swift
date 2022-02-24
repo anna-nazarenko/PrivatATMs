@@ -9,50 +9,50 @@ import Foundation
 import RealmSwift
 
 class Schedule: Object, Codable {
-    @Persisted var mon: String
-    @Persisted var tue: String
-    @Persisted var wed: String
-    @Persisted var thu: String
-    @Persisted var fri: String
-    @Persisted var sat: String
-    @Persisted var sun: String
-    @Persisted var hol: String
+  @Persisted var mon: String
+  @Persisted var tue: String
+  @Persisted var wed: String
+  @Persisted var thu: String
+  @Persisted var fri: String
+  @Persisted var sat: String
+  @Persisted var sun: String
+  @Persisted var hol: String
 }
 
 extension Schedule {
-    var numberOfDays: Int {
-        return Day.allCases.count
-    }
+  var numberOfDays: Int {
+    return Day.allCases.count
+  }
+  
+  struct WorkingHoursByDay {
+    var day: String
+    var hours: String
+  }
+  
+  enum Day: Int, CaseIterable {
+    case monday, tuesday, wednesday, thursday, friday, saturday, sunday, holiday
+  }
+  
+  func getWorkingHoursByDay(_ forIndex: Int) -> WorkingHoursByDay {
+    let day: Day = Day(rawValue: forIndex) ?? .holiday
     
-    struct WorkingHoursByDay {
-        var day: String
-        var hours: String
+    switch day {
+    case .monday:
+      return WorkingHoursByDay(day: "Monday", hours: mon)
+    case .tuesday:
+      return WorkingHoursByDay(day: "Tuesday", hours: tue)
+    case .wednesday:
+      return WorkingHoursByDay(day: "Wednesday", hours: wed)
+    case .thursday:
+      return WorkingHoursByDay(day: "Thursday", hours: thu)
+    case .friday:
+      return WorkingHoursByDay(day: "Friday", hours: fri)
+    case .saturday:
+      return WorkingHoursByDay(day: "Saturday", hours: sat)
+    case .sunday:
+      return WorkingHoursByDay(day: "Sunday", hours: sun)
+    case .holiday:
+      return WorkingHoursByDay(day: "Holiday", hours: hol)
     }
-    
-    enum Day: Int, CaseIterable {
-        case monday, tuesday, wednesday, thursday, friday, saturday, sunday, holiday
-    }
-    
-    func getWorkingHoursByDay(_ forIndex: Int) -> WorkingHoursByDay {
-        let day: Day = Day(rawValue: forIndex) ?? .holiday
-        
-        switch day {
-        case .monday:
-            return WorkingHoursByDay(day: "Monday", hours: mon)
-        case .tuesday:
-            return WorkingHoursByDay(day: "Tuesday", hours: tue)
-        case .wednesday:
-            return WorkingHoursByDay(day: "Wednesday", hours: wed)
-        case .thursday:
-            return WorkingHoursByDay(day: "Thursday", hours: thu)
-        case .friday:
-            return WorkingHoursByDay(day: "Friday", hours: fri)
-        case .saturday:
-            return WorkingHoursByDay(day: "Saturday", hours: sat)
-        case .sunday:
-            return WorkingHoursByDay(day: "Sunday", hours: sun)
-        case .holiday:
-            return WorkingHoursByDay(day: "Holiday", hours: hol)
-        }
-    }
+  }
 }

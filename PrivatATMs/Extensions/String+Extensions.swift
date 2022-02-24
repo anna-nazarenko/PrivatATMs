@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func percentEncode() -> String? {
-        return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
-    }
+  func percentEncode() -> String? {
+    return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
+  }
 }

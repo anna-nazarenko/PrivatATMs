@@ -17,12 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         print(Realm.Configuration.defaultConfiguration.fileURL ?? "No Realm location")
         
-        do {
-            let _ = try Realm()
-        } catch {
-            print("Error initialising new realm, \(error)")
-        }
-        
         return true
     }
 
