@@ -15,17 +15,6 @@ class ExchangeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     addSwiftUIView(ExchangeView(), to: view)
-    self.currencyManager.delegate = self
     self.currencyManager.fetchBankCurrency()
-  }
-}
-
-extension ExchangeViewController: CurrencyManagerDelegate {
-  func didUpdateCurrencies(data: [Currency]) {
-    //        print(data)
-  }
-  
-  func didFailWithError(message: String) {
-    print(message)
   }
 }
