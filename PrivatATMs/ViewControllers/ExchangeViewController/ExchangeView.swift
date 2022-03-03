@@ -14,6 +14,7 @@ struct ExchangeView: View {
   @State var privat24CurrencyID = 0
   private let bankCurrencies = ["USD", "EUR", "BTC"]
   private let privat24Currencies = ["USD", "EUR", "RUR", "BTC"]
+  private let currencyImages = ["dollarsign.circle.fill", "eurosign.circle.fill", "bitcoinsign.circle.fill"]
   
   var body: some View {
     
@@ -23,7 +24,7 @@ struct ExchangeView: View {
         Color(UIColor(.cyan))
         
         VStack {
-          Image(systemName: "dollarsign.circle.fill")
+          Image(systemName: currencyImages[bankcCurrencyID])
             .resizable()
             .frame(width: 100, height: 100, alignment: .center)
             .foregroundColor(.yellow)
@@ -39,24 +40,30 @@ struct ExchangeView: View {
                 .font(Font.system(size: 55))
                 .fontWeight(.regular)
                 .foregroundColor(.white)
-                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 10)
                 .padding(.vertical, 1)
-                .scaledToFill()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             }
             
             VStack {
               Text("Sale")
                 .font(Font.custom("HelveticaNeue", size: 25))
                 .foregroundColor(.white)
+              
               Text(String(format: "%.2f", self.exchangePresenter.saleRate ?? 0))
                 .font(Font.system(size: 55))
                 .fontWeight(.regular)
                 .foregroundColor(.white)
-                .padding(.horizontal, 15)
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 10)
                 .padding(.vertical, 1)
-                .scaledToFill()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
             }
           }
+          .frame(width: 350, height: 120)
         }
       }
       
@@ -72,10 +79,10 @@ struct ExchangeView: View {
               Text(bankCurrencies[$0])
             }
           }
-          .onChange(of: bankcCurrencyID, perform: { currencyID in
+          .onChange(of: bankcCurrencyID) { currencyID in
             print(currencyID)
             self.exchangePresenter.updateCurrencyRate(id: currencyID)
-          })
+          }
           .pickerStyle(.segmented)
           .padding(15)
           
