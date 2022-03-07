@@ -32,35 +32,13 @@ struct ExchangeView: View {
           
           HStack {
             VStack {
-              Text("Buy")
-                .font(Font.custom("HelveticaNeue", size: 25))
-                .foregroundColor(.white)
-              
-              Text(String(format: "%.2f", self.exchangePresenter.buyRate ?? 0))
-                .font(Font.system(size: 55))
-                .fontWeight(.regular)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 1)
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
+              SmallLabelView(text: "Buy")
+              CurrencyRateView(rate: self.exchangePresenter.buyRate ?? 0)
             }
             
             VStack {
-              Text("Sale")
-                .font(Font.custom("HelveticaNeue", size: 25))
-                .foregroundColor(.white)
-              
-              Text(String(format: "%.2f", self.exchangePresenter.saleRate ?? 0))
-                .font(Font.system(size: 55))
-                .fontWeight(.regular)
-                .foregroundColor(.white)
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 10)
-                .padding(.vertical, 1)
-                .minimumScaleFactor(0.5)
-                .lineLimit(1)
+              SmallLabelView(text: "Sale")
+              CurrencyRateView(rate: self.exchangePresenter.saleRate ?? 0)
             }
           }
           .frame(width: 350, height: 120)
@@ -108,5 +86,30 @@ struct ExchangeView: View {
 struct ExchangeView_Previews: PreviewProvider {
   static var previews: some View {
     ExchangeView()
+  }
+}
+
+struct SmallLabelView: View {
+  let text: String
+  var body: some View {
+    Text(text)
+      .font(Font.custom("HelveticaNeue", size: 20))
+      .foregroundColor(.white)
+  }
+}
+
+struct CurrencyRateView: View {
+  var rate: Double
+
+  var body: some View {
+    Text(String(format: "%.2f", rate))
+      .font(Font.system(size: 55))
+      .fontWeight(.regular)
+      .foregroundColor(.white)
+      .frame(maxWidth: .infinity)
+      .padding(.horizontal, 10)
+      .minimumScaleFactor(0.5)
+      .lineLimit(1)
+      .frame(height: 75)
   }
 }
