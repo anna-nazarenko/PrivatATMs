@@ -6,25 +6,29 @@
 //
 
 import SwiftUI
-import Combine
+
+//MARK: - Exchange View
 
 struct ExchangeView: View {
   @StateObject var exchangePresenter = ExchangePresenter()
   @State var bankcCurrencyID = 0
-  @State var privat24CurrencyID = 0
+  @State var currencyName = "USD"
   private let bankCurrencies = ["USD", "EUR", "BTC"]
-  private let privat24Currencies = ["USD", "EUR", "RUR", "BTC"]
-  private let currencyImages = ["dollarsign.circle.fill", "eurosign.circle.fill", "bitcoinsign.circle.fill"]
+  private let privat24Currencies = ["United States Dollar", "Euro", "Russian Ruble", "Bitcoin"]
+
+  
+  init() {
+    UITableView.appearance().backgroundColor = .clear
+  }
   
   var body: some View {
-    
     VStack(alignment: .center) {
       
       ZStack {
         Color(UIColor(.cyan))
         
         VStack {
-          Image(systemName: currencyImages[bankcCurrencyID])
+          Image(systemName: exchangePresenter.getImageName(by: currencyName))
             .resizable()
             .frame(width: 100, height: 100, alignment: .center)
             .foregroundColor(.yellow)
@@ -51,30 +55,36 @@ struct ExchangeView: View {
         VStack {
           Text("Bank")
             .font(Font.custom("HelveticaNeue", size: 20))
+            .padding(.vertical, 25)
 
           Picker(selection: $bankcCurrencyID, label: Text(bankCurrencies[bankcCurrencyID])) {
             ForEach(0 ..< bankCurrencies.count) {
               Text(bankCurrencies[$0])
             }
           }
-          .onChange(of: bankcCurrencyID) { currencyID in
-            print(currencyID)
-            self.exchangePresenter.updateCurrencyRate(id: currencyID)
-          }
           .pickerStyle(.segmented)
-          .padding(15)
+          .padding(.horizontal, 15)
+          .onChange(of: bankcCurrencyID) { currencyID in
+            self.exchangePresenter.updateCurrencyRate(id: currencyID, from: .bank)
+            guard let selectedCurrency = exchangePresenter.bankCurrencies?[currencyID].ccy else { return }
+            self.currencyName = selectedCurrency
+          }
           
           Text("Privat24")
             .font(Font.custom("HelveticaNeue", size: 20))
-            .padding(.top, 45)
-          
-          Picker(selection: $privat24CurrencyID, label: Text(privat24Currencies[privat24CurrencyID])) {
-            ForEach(privat24Currencies, id: \.self) {
-              Text($0)
-            }
+            .padding(.top, 35)
+
+          List(privat24Currencies.indices, id: \.self) { index in
+            Text(privat24Currencies[index])
+              .onTapGesture {
+                self.exchangePresenter.updateCurrencyRate(id: index, from: .privat24)
+                guard let selectedCurrency = exchangePresenter.privat24Currencies?[index].ccy else { return } //create func
+                self.currencyName = selectedCurrency
+              }
           }
-          .pickerStyle(.segmented)
-          .padding(15)
+          .onAppear(perform: {
+              UITableView.appearance().contentInset.top = -25
+          })
         }
       }
     }
@@ -83,11 +93,15 @@ struct ExchangeView: View {
   }
 }
 
+//MARK: - Preview Provider
+
 struct ExchangeView_Previews: PreviewProvider {
   static var previews: some View {
     ExchangeView()
   }
 }
+
+//MARK: - Small Label View
 
 struct SmallLabelView: View {
   let text: String
@@ -97,6 +111,8 @@ struct SmallLabelView: View {
       .foregroundColor(.white)
   }
 }
+
+//MARK: - Currency Rate View
 
 struct CurrencyRateView: View {
   var rate: Double

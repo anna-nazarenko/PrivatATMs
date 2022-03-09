@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol CurrencyManagerDelegate: AnyObject {
-  func didUpdateCurrencies(data: [Currency])
+  func didUpdateCurrencies(data: [Currency], from: CurrencyType)
   func didFailWithError(message: String)
 }
 
@@ -21,29 +21,24 @@ class CurrencyManager {
   private init() {}
   
   func fetchBankCurrency() {
-    //let stringURL = "\(API.baseURL.rawValue)\(API.bankCurrencyPath.rawValue)"
-    let stringURL = "https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5"
-    perfomCurrencyRequest(with: stringURL)
+    let stringURL = "\(API.baseURL.rawValue)\(API.bankCurrencyPath.rawValue)"
+    perfomCurrencyRequest(with: stringURL, requestType: CurrencyType.bank)
   }
   
   func fetchPrivat24Currency() {
-    let stringURL = "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11"
-    //    let stringURL = "\(API.baseURL.rawValue)\(API.privat24CurrencyPath.rawValue)"
-    perfomCurrencyRequest(with: stringURL)
+    let stringURL = "\(API.baseURL.rawValue)\(API.privat24CurrencyPath.rawValue)"
+    perfomCurrencyRequest(with: stringURL, requestType: CurrencyType.privat24)
   }
   
-  func perfomCurrencyRequest(with urlString: String) {
+  func perfomCurrencyRequest(with urlString: String, requestType: CurrencyType) {
     self.request = AF.request(urlString)
       .validate()
       .responseDecodable(of: [Currency].self, decoder: JSONDecoder()) { response in
-        
-        print(response.value)
-        
+
         switch response.result {
-          
         case .success:
           guard let resultData = response.value else { return }
-          self.delegate?.didUpdateCurrencies(data: resultData)
+          self.delegate?.didUpdateCurrencies(data: resultData, from: requestType)
           
         case .failure:
           if let code = response.response?.statusCode {

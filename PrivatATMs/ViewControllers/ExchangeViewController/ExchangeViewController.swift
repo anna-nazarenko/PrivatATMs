@@ -16,5 +16,6 @@ class ExchangeViewController: UIViewController {
     super.viewDidLoad()
     addSwiftUIView(ExchangeView(), to: view)
     self.currencyManager.fetchBankCurrency()
+    self.currencyManager.fetchPrivat24Currency()
   }
 }
