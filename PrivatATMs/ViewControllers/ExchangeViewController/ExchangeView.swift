@@ -14,6 +14,7 @@ struct ExchangeView: View {
   @State var bankcCurrencyID = 0
   @State var currencyName = "USD"
   private let bankCurrencies = ["USD", "EUR", "BTC"]
+  private let bankCurrencies2 = ["United States Dollar", "Euro", "Bitcoin"]
   private let privat24Currencies = ["United States Dollar", "Euro", "Russian Ruble", "Bitcoin"]
 
   
@@ -33,6 +34,7 @@ struct ExchangeView: View {
             .frame(width: 100, height: 100, alignment: .center)
             .foregroundColor(.yellow)
             .padding(25)
+            .padding(.top, 40)
           
           HStack {
             VStack {
@@ -48,43 +50,39 @@ struct ExchangeView: View {
           .frame(width: 350, height: 120)
         }
       }
+      .frame(maxHeight: 350)
+
       
       ZStack {
         Color(UIColor(.yellow))
         
         VStack {
-          Text("Bank")
-            .font(Font.custom("HelveticaNeue", size: 20))
-            .padding(.vertical, 25)
-
-          Picker(selection: $bankcCurrencyID, label: Text(bankCurrencies[bankcCurrencyID])) {
-            ForEach(0 ..< bankCurrencies.count) {
-              Text(bankCurrencies[$0])
+          List {
+            Section("Bank") {
+              ForEach(bankCurrencies2.indices, id: \.self) { index in
+                Text(bankCurrencies2[index])
+                  .onTapGesture {
+                    self.exchangePresenter.updateCurrencyRate(id: index, from: .bank)
+                    guard let selectedCurrency = exchangePresenter.bankCurrencies?[index].ccy else { return }
+                    self.currencyName = selectedCurrency
+                  }
+              }
+            }
+            
+            Section("Privat24") {
+              ForEach(privat24Currencies.indices, id: \.self) { index in
+                Text(privat24Currencies[index])
+                  .onTapGesture {
+                    self.exchangePresenter.updateCurrencyRate(id: index, from: .privat24)
+                    guard let selectedCurrency = exchangePresenter.privat24Currencies?[index].ccy else { return }
+                    self.currencyName = selectedCurrency
+                  }
+              }
+              .onAppear {
+                UITableView.appearance().contentInset.top = -25
+              }
             }
           }
-          .pickerStyle(.segmented)
-          .padding(.horizontal, 15)
-          .onChange(of: bankcCurrencyID) { currencyID in
-            self.exchangePresenter.updateCurrencyRate(id: currencyID, from: .bank)
-            guard let selectedCurrency = exchangePresenter.bankCurrencies?[currencyID].ccy else { return }
-            self.currencyName = selectedCurrency
-          }
-          
-          Text("Privat24")
-            .font(Font.custom("HelveticaNeue", size: 20))
-            .padding(.top, 35)
-
-          List(privat24Currencies.indices, id: \.self) { index in
-            Text(privat24Currencies[index])
-              .onTapGesture {
-                self.exchangePresenter.updateCurrencyRate(id: index, from: .privat24)
-                guard let selectedCurrency = exchangePresenter.privat24Currencies?[index].ccy else { return } //create func
-                self.currencyName = selectedCurrency
-              }
-          }
-          .onAppear(perform: {
-              UITableView.appearance().contentInset.top = -25
-          })
         }
       }
     }
