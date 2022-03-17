@@ -209,8 +209,8 @@
 		43F66427279701DB008C7990 /* PrivatATMs */ = {
 			isa = PBXGroup;
 			children = (
-				435A19D727B6794300E5D7C6 /* Database */,
 				4336AB0327B3EBAC0004C1C6 /* Extensions */,
+				435A19D727B6794300E5D7C6 /* Database */,
 				43C9778E27A15895008778C9 /* Networking */,
 				43F6643E27970633008C7990 /* ViewControllers */,
 				43F66428279701DB008C7990 /* AppDelegate.swift */,
