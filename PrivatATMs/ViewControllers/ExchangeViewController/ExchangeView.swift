@@ -23,12 +23,7 @@ struct ExchangeView: View {
         Color(UIColor(.cyan))
         
         VStack {
-          Image(systemName: exchangePresenter.getImageName(by: currencyName))
-            .resizable()
-            .frame(width: 100, height: 100, alignment: .center)
-            .foregroundColor(.yellow)
-            .padding(25)
-            .padding(.top, 40)
+          CurrencyIcon(name: exchangePresenter.getImageName(by: currencyName))
           
           HStack {
             VStack {
@@ -78,6 +73,20 @@ struct ExchangeView: View {
 struct ExchangeView_Previews: PreviewProvider {
   static var previews: some View {
     ExchangeView()
+  }
+}
+
+//MARK: - Currency Icon
+
+struct CurrencyIcon: View {
+  let name: String
+  var body: some View {
+    Image(systemName: name)
+      .resizable()
+      .frame(width: 100, height: 100, alignment: .center)
+      .foregroundColor(.yellow)
+      .padding(25)
+      .padding(.top, 40)
   }
 }
 
