@@ -13,14 +13,8 @@ struct ExchangeView: View {
   @StateObject var exchangePresenter = ExchangePresenter()
   @State var bankcCurrencyID = 0
   @State var currencyName = "USD"
-  private let bankCurrencies = ["USD", "EUR", "BTC"]
-  private let bankCurrencies2 = ["United States Dollar", "Euro", "Bitcoin"]
+  private let bankCurrencies = ["United States Dollar", "Euro", "Bitcoin"]
   private let privat24Currencies = ["United States Dollar", "Euro", "Russian Ruble", "Bitcoin"]
-
-  
-  init() {
-    UITableView.appearance().backgroundColor = .clear
-  }
   
   var body: some View {
     VStack(alignment: .center) {
@@ -52,35 +46,23 @@ struct ExchangeView: View {
       }
       .frame(maxHeight: 350)
 
-      
-      ZStack {
-        Color(UIColor(.yellow))
-        
-        VStack {
-          List {
-            Section("Bank") {
-              ForEach(bankCurrencies2.indices, id: \.self) { index in
-                Text(bankCurrencies2[index])
-                  .onTapGesture {
-                    self.exchangePresenter.updateCurrencyRate(id: index, from: .bank)
-                    guard let selectedCurrency = exchangePresenter.bankCurrencies?[index].ccy else { return }
-                    self.currencyName = selectedCurrency
-                  }
+      VStack {
+        List {
+          Section("Bank") {
+            ForEach(bankCurrencies.indices, id: \.self) { index in
+              Button(bankCurrencies[index]) {
+                self.currencyName = self.exchangePresenter.getSelectedCurrency(index, currencyType: .bank)
               }
+              .foregroundColor(.black)
             }
-            
-            Section("Privat24") {
-              ForEach(privat24Currencies.indices, id: \.self) { index in
-                Text(privat24Currencies[index])
-                  .onTapGesture {
-                    self.exchangePresenter.updateCurrencyRate(id: index, from: .privat24)
-                    guard let selectedCurrency = exchangePresenter.privat24Currencies?[index].ccy else { return }
-                    self.currencyName = selectedCurrency
-                  }
+          }
+          
+          Section("Privat24") {
+            ForEach(privat24Currencies.indices, id: \.self) { index in
+              Button(privat24Currencies[index]) {
+                self.currencyName = self.exchangePresenter.getSelectedCurrency(index, currencyType: .privat24)
               }
-              .onAppear {
-                UITableView.appearance().contentInset.top = -25
-              }
+              .foregroundColor(.black)
             }
           }
         }

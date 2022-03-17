@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Network
 
 enum CurrencyType: String {
   case bank
@@ -15,26 +16,26 @@ enum CurrencyType: String {
 
 class ExchangePresenter: ObservableObject  {
   private let currencyManager = CurrencyManager.shared
-  @Published var bankCurrencies: [Currency]?
-  @Published var privat24Currencies: [Currency]?
-  @Published var buyRate: Double? = 28.16
-  @Published var saleRate: Double? = 28.31
-  let currencyImages2 = [
+  private let currencyImages = [
     "USD": "dollarsign.circle.fill",
     "EUR": "eurosign.circle.fill",
     "RUR": "rublesign.circle.fill",
     "BTC": "bitcoinsign.circle.fill"
   ]
-  private let currencyImages = ["dollarsign.circle.fill", "eurosign.circle.fill", "bitcoinsign.circle.fill"]
+  
+  @Published var bankCurrencies: [Currency]?
+  @Published var privat24Currencies: [Currency]?
+  @Published var buyRate: Double?
+  @Published var saleRate: Double?
   
   init() {
     self.currencyManager.delegate = self
   }
   
-  func updateCurrencyRate(id: Int, from: CurrencyType) {
+  private func updateCurrencyRate(_ id: Int, _ currencyType: CurrencyType) {
     var selectedCurrency: Currency?
     
-    switch from {
+    switch currencyType {
     case .bank:
       selectedCurrency = bankCurrencies?[id]
       
@@ -49,7 +50,17 @@ class ExchangePresenter: ObservableObject  {
   }
   
   func getImageName(by currency: String) -> String {
-    return currencyImages2[currency] ?? ""
+    return currencyImages[currency] ?? ""
+  }
+  
+  func getSelectedCurrency(_ index: Int, currencyType: CurrencyType) -> String {
+    updateCurrencyRate(index, currencyType)
+    switch currencyType {
+    case .bank:
+      return bankCurrencies?[index].ccy ?? ""
+    case .privat24:
+      return privat24Currencies?[index].ccy ?? ""
+    }
   }
 }
 
@@ -58,6 +69,8 @@ extension ExchangePresenter: CurrencyManagerDelegate {
     switch from {
     case .bank:
       self.bankCurrencies = data
+      self.buyRate = Double(bankCurrencies?[0].buy ?? "")
+      self.saleRate = Double(bankCurrencies?[0].sale ?? "")
     case .privat24:
       self.privat24Currencies = data
     }
