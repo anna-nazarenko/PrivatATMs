@@ -22,6 +22,7 @@
 		435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435A19D827B6798400E5D7C6 /* DatabaseManager.swift */; };
 		4380A44327BFACAA004E28F3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44227BFACAA004E28F3 /* String+Extensions.swift */; };
 		4380A44527C3D3E5004E28F3 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44427C3D3E5004E28F3 /* ExchangeView.swift */; };
+		4393606B27E48BC300C37432 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393606A27E48BC300C37432 /* R.generated.swift */; };
 		43A3139827BA43F10010566A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139727BA43F10010566A /* Realm */; };
 		43A3139A27BA43F10010566A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139927BA43F10010566A /* RealmSwift */; };
 		43A3139C27BE94810010566A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3139B27BE94810010566A /* RealmManager.swift */; };
@@ -58,6 +59,7 @@
 		435A19D827B6798400E5D7C6 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		4380A44227BFACAA004E28F3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4380A44427C3D3E5004E28F3 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
+		4393606A27E48BC300C37432 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		43A3139B27BE94810010566A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		43A3139D27BE98920010566A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		43C9777E279E904A008778C9 /* Details.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Details.storyboard; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				433177FA27E398E4005391C0 /* Resources */,
 				43F66433279701DB008C7990 /* LaunchScreen.storyboard */,
 				43F66436279701DB008C7990 /* Info.plist */,
+				4393606A27E48BC300C37432 /* R.generated.swift */,
 			);
 			path = PrivatATMs;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 			buildConfigurationList = 43F66439279701DB008C7990 /* Build configuration list for PBXNativeTarget "PrivatATMs" */;
 			buildPhases = (
 				BDAB030AF12F9782C4AA2E71 /* [CP] Check Pods Manifest.lock */,
+				4393606927E48AC700C37432 /* ShellScript */,
 				43F66421279701DB008C7990 /* Sources */,
 				43F66422279701DB008C7990 /* Frameworks */,
 				43F66423279701DB008C7990 /* Resources */,
@@ -361,6 +365,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4393606927E48AC700C37432 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
+		};
 		BDAB030AF12F9782C4AA2E71 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -398,6 +421,7 @@
 				4380A44327BFACAA004E28F3 /* String+Extensions.swift in Sources */,
 				43C97785279EB4EE008778C9 /* Schedule.swift in Sources */,
 				4334040227B14EC7009CD616 /* DevicesPresenter.swift in Sources */,
+				4393606B27E48BC300C37432 /* R.generated.swift in Sources */,
 				4344434127C6223400224C93 /* Currrency.swift in Sources */,
 				43A3139C27BE94810010566A /* RealmManager.swift in Sources */,
 				43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */,
