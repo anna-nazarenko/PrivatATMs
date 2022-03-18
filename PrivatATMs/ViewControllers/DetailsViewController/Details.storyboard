@@ -44,8 +44,8 @@
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="OHO-Lf-b6x"/>
                                 </connections>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Графік роботи:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjZ-zd-XX9">
-                                <rect key="frame" x="130" y="149" width="154" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work schedule:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjZ-zd-XX9">
+                                <rect key="frame" x="130.5" y="149" width="153" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -66,6 +66,7 @@
                     <connections>
                         <outlet property="address" destination="lb4-1c-sgd" id="pxp-gF-xwm"/>
                         <outlet property="tableView" destination="Nf5-bR-Qnr" id="esP-AL-1Rb"/>
+                        <outlet property="workScheduleLabel" destination="fjZ-zd-XX9" id="37b-a1-AKL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,7 @@ import UIKit
 class DetailsViewController: UIViewController {
   
   @IBOutlet weak var address: UILabel!
+  @IBOutlet weak var workScheduleLabel: UILabel!
   @IBOutlet weak var tableView: UITableView!
   
   var device: Device?
@@ -22,6 +23,7 @@ class DetailsViewController: UIViewController {
     loadData()
     self.tableView.dataSource = self
     self.tableView.register(UINib(nibName: "WorkingHoursCell", bundle: nil), forCellReuseIdentifier: "WorkingHoursCell")
+    workScheduleLabel.text = "DetailsView_workSchedule".localized()
   }
   
   //MARK: - Data Manipulation Methods

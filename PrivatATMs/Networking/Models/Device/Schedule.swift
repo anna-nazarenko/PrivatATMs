@@ -38,21 +38,21 @@ extension Schedule {
     
     switch day {
     case .monday:
-      return WorkingHoursByDay(day: "Monday", hours: mon)
+      return WorkingHoursByDay(day: "WorkingHours_monday".localized(), hours: mon)
     case .tuesday:
-      return WorkingHoursByDay(day: "Tuesday", hours: tue)
+      return WorkingHoursByDay(day: "WorkingHours_tuesday".localized(), hours: tue)
     case .wednesday:
-      return WorkingHoursByDay(day: "Wednesday", hours: wed)
+      return WorkingHoursByDay(day: "WorkingHours_wednesday".localized(), hours: wed)
     case .thursday:
-      return WorkingHoursByDay(day: "Thursday", hours: thu)
+      return WorkingHoursByDay(day: "WorkingHours_thursday".localized(), hours: thu)
     case .friday:
-      return WorkingHoursByDay(day: "Friday", hours: fri)
+      return WorkingHoursByDay(day: "WorkingHours_friday".localized(), hours: fri)
     case .saturday:
-      return WorkingHoursByDay(day: "Saturday", hours: sat)
+      return WorkingHoursByDay(day: "WorkingHours_saturday".localized(), hours: sat)
     case .sunday:
-      return WorkingHoursByDay(day: "Sunday", hours: sun)
+      return WorkingHoursByDay(day: "WorkingHours_sunday".localized(), hours: sun)
     case .holiday:
-      return WorkingHoursByDay(day: "Holiday", hours: hol)
+      return WorkingHoursByDay(day: "WorkingHours_holiday".localized(), hours: hol)
     }
   }
 }

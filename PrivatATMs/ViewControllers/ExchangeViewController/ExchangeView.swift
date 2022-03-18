@@ -27,12 +27,12 @@ struct ExchangeView: View {
           
           HStack {
             VStack {
-              SmallLabelView(text: "Buy")
+              SmallLabelView(text: "ExchangeView_buy")
               CurrencyRateView(rate: self.exchangePresenter.buyRate ?? 0)
             }
             
             VStack {
-              SmallLabelView(text: "Sale")
+              SmallLabelView(text: "ExchangeView_sale")
               CurrencyRateView(rate: self.exchangePresenter.saleRate ?? 0)
             }
           }
@@ -43,7 +43,7 @@ struct ExchangeView: View {
 
       VStack {
         List {
-          Section("Bank") {
+          Section(LocalizedStringKey("ExchangeView_bank")) {
             ForEach(bankCurrencies.indices, id: \.self) { index in
               Button(bankCurrencies[index]) {
                 self.currencyName = self.exchangePresenter.getSelectedCurrency(index, currencyType: .bank)
@@ -52,7 +52,7 @@ struct ExchangeView: View {
             }
           }
           
-          Section("Privat24") {
+          Section(LocalizedStringKey("ExchangeView_privat24")) {
             ForEach(privat24Currencies.indices, id: \.self) { index in
               Button(privat24Currencies[index]) {
                 self.currencyName = self.exchangePresenter.getSelectedCurrency(index, currencyType: .privat24)
@@ -93,7 +93,7 @@ struct CurrencyIcon: View {
 //MARK: - Small Label View
 
 struct SmallLabelView: View {
-  let text: String
+  let text: LocalizedStringKey
   var body: some View {
     Text(text)
       .font(Font.custom("HelveticaNeue", size: 20))

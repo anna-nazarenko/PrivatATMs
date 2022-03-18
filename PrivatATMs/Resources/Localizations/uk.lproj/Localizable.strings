@@ -1,0 +1,22 @@
+
+//MARK: - Details View
+
+"DetailsView_workSchedule" = "Робочий графік:";
+
+//MARK: - Working Hours
+
+"WorkingHours_monday"      = "Понеділок";
+"WorkingHours_tuesday"     = "Вівторок";
+"WorkingHours_wednesday"   = "Середа";
+"WorkingHours_thursday"    = "Четверг";
+"WorkingHours_friday"      = "П'ятниця";
+"WorkingHours_saturday"    = "Субота";
+"WorkingHours_sunday"      = "Неділя";
+"WorkingHours_holiday"     = "Свята";
+
+//MARK: - Exchange View
+
+"ExchangeView_buy"         = "Купівля";
+"ExchangeView_sale"        = "Продаж";
+"ExchangeView_bank"        = "Банк";
+"ExchangeView_privat24"    = "Privat24";

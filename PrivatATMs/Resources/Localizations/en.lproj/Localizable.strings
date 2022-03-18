@@ -1,0 +1,22 @@
+
+//MARK: - Details View
+
+"DetailsView_workSchedule" = "Work schedule:";
+
+//MARK: - Working Hours
+
+"WorkingHours_monday"      = "Monday";
+"WorkingHours_tuesday"     = "Tuesday";
+"WorkingHours_wednesday"   = "Wednesday";
+"WorkingHours_thursday"    = "Thursday";
+"WorkingHours_friday"      = "Friday";
+"WorkingHours_saturday"    = "Saturday";
+"WorkingHours_sunday"      = "Sunday";
+"WorkingHours_holiday"     = "Holiday";
+
+//MARK: - Exchange View
+
+"ExchangeView_buy"         = "Buy";
+"ExchangeView_sale"        = "Sale";
+"ExchangeView_bank"        = "Bank";
+"ExchangeView_privat24"    = "Privat24";
