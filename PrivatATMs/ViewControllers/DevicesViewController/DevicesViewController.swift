@@ -93,11 +93,10 @@ extension DevicesViewController: DevicesViewControllerProtocol {
   }
   
   func pushDetailsVC() {
-    let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-    let detailsVC = storyBoard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
+    guard let vc = R.storyboard.details.detailsVC() else { return }
     if let indexPath = tableView.indexPathForSelectedRow, let devices = self.devicesPresenter?.devices {
-      detailsVC.device = devices[indexPath.row]
+      vc.device = devices[indexPath.row]
     }
-    self.navigationController?.pushViewController(detailsVC, animated: true)
+    self.navigate(vc, type: .push)
   }
 }

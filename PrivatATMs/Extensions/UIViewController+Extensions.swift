@@ -58,3 +58,28 @@ extension UIViewController {
     NSLayoutConstraint.activate(constraints)
   }
 }
+
+//MARK: - Navigation Methods
+
+extension UIViewController {
+  enum NavigationType {
+    case push
+    case present
+    case pop
+  }
+  
+  func navigate(_ viewController: UIViewController, type: NavigationType, animated: Bool = true) {
+    guard let navigation = self.navigationController else {
+      print("No Navigation Controller")
+      return
+    }
+    
+    switch type {
+      case .push: navigation.pushViewController(viewController, animated: animated)
+      case .present: navigation.present(viewController, animated: animated, completion: nil)
+      case .pop: navigation.popViewController(animated: animated)
+    }
+  }
+}
+
+
