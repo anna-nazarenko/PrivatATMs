@@ -15,7 +15,7 @@
 		4331780527E47405005391C0 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4331780727E47405005391C0 /* Exchange.storyboard */; };
 		4334040227B14EC7009CD616 /* DevicesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4334040127B14EC7009CD616 /* DevicesPresenter.swift */; };
 		4336AB0527B3EBE30004C1C6 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */; };
-		4344434127C6223400224C93 /* Currrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344434027C6223400224C93 /* Currrency.swift */; };
+		4344434127C6223400224C93 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344434027C6223400224C93 /* Currency.swift */; };
 		4344434327C62CC800224C93 /* CurrencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344434227C62CC800224C93 /* CurrencyManager.swift */; };
 		4344434527C6305D00224C93 /* ExchangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4344434427C6305D00224C93 /* ExchangePresenter.swift */; };
 		43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* DevicesViewController.swift */; };
@@ -53,7 +53,7 @@
 		4331780927E47407005391C0 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/Exchange.strings; sourceTree = "<group>"; };
 		4334040127B14EC7009CD616 /* DevicesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesPresenter.swift; sourceTree = "<group>"; };
 		4336AB0427B3EBE30004C1C6 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
-		4344434027C6223400224C93 /* Currrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currrency.swift; sourceTree = "<group>"; };
+		4344434027C6223400224C93 /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		4344434227C62CC800224C93 /* CurrencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyManager.swift; sourceTree = "<group>"; };
 		4344434427C6305D00224C93 /* ExchangePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenter.swift; sourceTree = "<group>"; };
 		43458CB827980EB500A98ADE /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 		4344433F27C6221A00224C93 /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				4344434027C6223400224C93 /* Currrency.swift */,
+				4344434027C6223400224C93 /* Currency.swift */,
 			);
 			path = Currency;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				43C97785279EB4EE008778C9 /* Schedule.swift in Sources */,
 				4334040227B14EC7009CD616 /* DevicesPresenter.swift in Sources */,
 				4393606B27E48BC300C37432 /* R.generated.swift in Sources */,
-				4344434127C6223400224C93 /* Currrency.swift in Sources */,
+				4344434127C6223400224C93 /* Currency.swift in Sources */,
 				43A3139C27BE94810010566A /* RealmManager.swift in Sources */,
 				43C97781279E907A008778C9 /* DetailsViewController.swift in Sources */,
 				435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */,
