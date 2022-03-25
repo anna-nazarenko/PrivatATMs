@@ -269,16 +269,24 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
 
-    /// This `R.string.localizable` struct is generated, and contains static references to 13 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 18 localization keys.
     struct localizable {
       /// en translation: Bank
       ///
       /// Locales: en, uk
       static let exchangeView_bank = Rswift.StringResource(key: "ExchangeView_bank", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
+      /// en translation: Bitcoin
+      ///
+      /// Locales: en, uk
+      static let currency_btc = Rswift.StringResource(key: "Currency_btc", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
       /// en translation: Buy
       ///
       /// Locales: en, uk
       static let exchangeView_buy = Rswift.StringResource(key: "ExchangeView_buy", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
+      /// en translation: Euro
+      ///
+      /// Locales: en, uk
+      static let currency_eur = Rswift.StringResource(key: "Currency_eur", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
       /// en translation: Friday
       ///
       /// Locales: en, uk
@@ -295,6 +303,10 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, uk
       static let exchangeView_privat24 = Rswift.StringResource(key: "ExchangeView_privat24", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
+      /// en translation: Russian Ruble
+      ///
+      /// Locales: en, uk
+      static let currency_rur = Rswift.StringResource(key: "Currency_rur", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
       /// en translation: Sale
       ///
       /// Locales: en, uk
@@ -315,6 +327,14 @@ struct R: Rswift.Validatable {
       ///
       /// Locales: en, uk
       static let workingHours_tuesday = Rswift.StringResource(key: "WorkingHours_tuesday", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
+      /// en translation: United State Dollar
+      ///
+      /// Locales: en, uk
+      static let currency_usd = Rswift.StringResource(key: "Currency_usd", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
+      /// en translation: Unknowed
+      ///
+      /// Locales: en, uk
+      static let currency_unknowed = Rswift.StringResource(key: "Currency_unknowed", tableName: "Localizable", bundle: R.hostingBundle, locales: ["en", "uk"], comment: nil)
       /// en translation: Wednesday
       ///
       /// Locales: en, uk
@@ -339,6 +359,21 @@ struct R: Rswift.Validatable {
         return NSLocalizedString("ExchangeView_bank", bundle: bundle, comment: "")
       }
 
+      /// en translation: Bitcoin
+      ///
+      /// Locales: en, uk
+      static func currency_btc(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Currency_btc", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Currency_btc"
+        }
+
+        return NSLocalizedString("Currency_btc", bundle: bundle, comment: "")
+      }
+
       /// en translation: Buy
       ///
       /// Locales: en, uk
@@ -352,6 +387,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("ExchangeView_buy", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Euro
+      ///
+      /// Locales: en, uk
+      static func currency_eur(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Currency_eur", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Currency_eur"
+        }
+
+        return NSLocalizedString("Currency_eur", bundle: bundle, comment: "")
       }
 
       /// en translation: Friday
@@ -412,6 +462,21 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("ExchangeView_privat24", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Russian Ruble
+      ///
+      /// Locales: en, uk
+      static func currency_rur(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Currency_rur", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Currency_rur"
+        }
+
+        return NSLocalizedString("Currency_rur", bundle: bundle, comment: "")
       }
 
       /// en translation: Sale
@@ -487,6 +552,36 @@ struct R: Rswift.Validatable {
         }
 
         return NSLocalizedString("WorkingHours_tuesday", bundle: bundle, comment: "")
+      }
+
+      /// en translation: United State Dollar
+      ///
+      /// Locales: en, uk
+      static func currency_usd(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Currency_usd", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Currency_usd"
+        }
+
+        return NSLocalizedString("Currency_usd", bundle: bundle, comment: "")
+      }
+
+      /// en translation: Unknowed
+      ///
+      /// Locales: en, uk
+      static func currency_unknowed(preferredLanguages: [String]? = nil) -> String {
+        guard let preferredLanguages = preferredLanguages else {
+          return NSLocalizedString("Currency_unknowed", bundle: hostingBundle, comment: "")
+        }
+
+        guard let (_, bundle) = localeBundle(tableName: "Localizable", preferredLanguages: preferredLanguages) else {
+          return "Currency_unknowed"
+        }
+
+        return NSLocalizedString("Currency_unknowed", bundle: bundle, comment: "")
       }
 
       /// en translation: Wednesday

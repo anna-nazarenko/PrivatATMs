@@ -20,3 +20,11 @@
 "ExchangeView_sale"        = "Sale";
 "ExchangeView_bank"        = "Bank";
 "ExchangeView_privat24"    = "Privat24";
+
+//MARK: - Currency Model
+
+"Currency_usd"             = "United State Dollar";
+"Currency_eur"             = "Euro";
+"Currency_rur"             = "Russian Ruble";
+"Currency_btc"             = "Bitcoin";
+"Currency_unknowed"        = "Unknowed";
