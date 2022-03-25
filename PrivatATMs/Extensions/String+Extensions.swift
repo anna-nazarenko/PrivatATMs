@@ -7,11 +7,15 @@
 
 import Foundation
 
+//MARK: - Percent Encoding
+
 extension String {
   func percentEncode() -> String? {
     return self.addingPercentEncoding(withAllowedCharacters: NSCharacterSet.urlQueryAllowed)
   }
 }
+
+//MARK: - Localization
 
 extension String {
   func localized() -> String {

@@ -8,10 +8,14 @@
 import Foundation
 import Alamofire
 
+//MARK: - Currency Manager Delegate
+
 protocol CurrencyManagerDelegate: AnyObject {
   func didUpdateCurrencies(data: [Currency], from: CurrencyType)
   func didFailWithError(message: String)
 }
+
+//MARK: - Currency Manager
 
 class CurrencyManager {
   static let shared = CurrencyManager()

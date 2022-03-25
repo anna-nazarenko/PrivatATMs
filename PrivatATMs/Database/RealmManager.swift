@@ -18,7 +18,6 @@ class RealmManager {
       try self.realm.write {
         self.realm.add(objects)
       }
-      
     } catch {
       print("Error saving data to Realm: \(error)")
     }

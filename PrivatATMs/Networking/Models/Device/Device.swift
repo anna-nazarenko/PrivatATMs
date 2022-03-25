@@ -8,9 +8,13 @@
 import Foundation
 import RealmSwift
 
+//MARK: - Result Model
+
 struct Result: Codable {
   let devices: [Device]
 }
+
+//MARK: - Device Model
 
 class Device: Object, Codable {
   
@@ -27,6 +31,8 @@ class Device: Object, Codable {
   @Persisted var longitude: String
   @Persisted var tw: Schedule?
 }
+
+//MARK: - Codable CityEn
 
 enum CityEn: Codable {
   case string(String)

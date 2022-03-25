@@ -8,13 +8,16 @@
 import UIKit
 
 class WorkingHoursCell: UITableViewCell {
+  
+    //MARK: - Outlets
 
     @IBOutlet private weak var dayOfWeek: UILabel!
     @IBOutlet weak var workingHours: UILabel!
+  
+    //MARK: - Methods
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     func configureCell(workingHoursByDay: Schedule.WorkingHoursByDay) {

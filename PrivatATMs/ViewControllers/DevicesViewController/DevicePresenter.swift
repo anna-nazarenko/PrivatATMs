@@ -7,7 +7,9 @@
 
 import Foundation
 
-protocol DevicesPresenterProtocol: AnyObject {
+//MARK: - Device Presenter Protocol
+
+protocol DevicePresenterProtocol: AnyObject {
   var devices: [Device]? { get set }
   var preSavedDevices: [Device]? { get set }
   func getDevices()
@@ -16,15 +18,17 @@ protocol DevicesPresenterProtocol: AnyObject {
   func cancelRequest()
 }
 
-class DevicesPresenter {
+class DevicePresenter {
   
-  //MARK: - Properties
+  //MARK: - Device Presenter Properties
   
   private let networkManager = NetworkManager.shared
   private let dbManager = DatabaseManager.shared
   private var viewController: DevicesViewControllerProtocol?
   var devices: [Device]?
   var preSavedDevices: [Device]?
+  
+  //MARK: - Device Presenter Methods
   
   init(_ viewController: DevicesViewControllerProtocol) {
     self.networkManager.delegate = self
@@ -36,9 +40,9 @@ class DevicesPresenter {
   }
 }
 
-//MARK: - Device Presenter Protocol
+//MARK: - Device Presenter Protocol Methods
 
-extension DevicesPresenter: DevicesPresenterProtocol {
+extension DevicePresenter: DevicePresenterProtocol {
   func getDevices() {
     self.viewController?.showSpinner()
     self.networkManager.fetchCashMachines()
@@ -54,7 +58,6 @@ extension DevicesPresenter: DevicesPresenterProtocol {
       self.preSavedDevices = Array(self.dbManager.getDeviceObjects())
       return
     }
-    
     didUpdateData(data: preSavedDevices, isInitiaRequest: false)
   }
   
@@ -66,7 +69,7 @@ extension DevicesPresenter: DevicesPresenterProtocol {
 
 //MARK: - Network Manager Delegate
 
-extension DevicesPresenter: NetworkManagerDelegate {
+extension DevicePresenter: NetworkManagerDelegate {
   
   func didUpdateData(data: [Device], isInitiaRequest: Bool) {
     self.viewController?.hideSpinner()

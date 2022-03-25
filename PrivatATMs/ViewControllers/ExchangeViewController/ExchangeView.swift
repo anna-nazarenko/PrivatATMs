@@ -10,52 +10,59 @@ import SwiftUI
 //MARK: - Exchange View
 
 struct ExchangeView: View {
+  
+  //MARK: - Properties
+  
   @StateObject var exchangePresenter = ExchangePresenter()
-  @State var bankcCurrencyID = 0
-  @State var currencyName = "USD"
-  private let bankCurrencies = ["United States Dollar", "Euro", "Bitcoin"]
-  private let privat24Currencies = ["United States Dollar", "Euro", "Russian Ruble", "Bitcoin"]
+  @State var currencyType = currencies.usd
+  
+  //MARK: - Body
   
   var body: some View {
     VStack(alignment: .center) {
       
+      //MARK: - Currency Rate View
+      
       ZStack {
         Color(UIColor(.cyan))
-        
         VStack {
-          CurrencyIcon(name: exchangePresenter.getImageName(by: currencyName))
+          self.currencyType.currencyImage
           
           HStack {
             VStack {
-              SmallLabelView(text: "ExchangeView_buy")
-              CurrencyRateView(rate: self.exchangePresenter.buyRate ?? 0)
+              SmallTextView(text: R.string.localizable.exchangeView_buy())
+              LargeTextView(rate: self.exchangePresenter.buyRate ?? 0)
             }
             
             VStack {
-              SmallLabelView(text: "ExchangeView_sale")
-              CurrencyRateView(rate: self.exchangePresenter.saleRate ?? 0)
+              SmallTextView(text: R.string.localizable.exchangeView_sale())
+              LargeTextView(rate: self.exchangePresenter.saleRate ?? 0)
             }
           }
           .frame(width: 350, height: 120)
         }
       }
       .frame(maxHeight: 350)
+      
+      //MARK: - Currency List View
 
       VStack {
         List {
-          Section(LocalizedStringKey("ExchangeView_bank")) {
-            ForEach(bankCurrencies.indices, id: \.self) { index in
-              Button(bankCurrencies[index]) {
-                self.currencyName = self.exchangePresenter.getSelectedCurrency(index, currencyType: .bank)
+          Section(R.string.localizable.exchangeView_bank()) {
+            ForEach(self.exchangePresenter.bankCurrencies.indices, id: \.self) { index in
+              Button(self.exchangePresenter.bankCurrencies[index].fullCurrencyName) {
+                self.currencyType = self.exchangePresenter.bankCurrencies[index].currentCurrency
+                self.exchangePresenter.updateCurrencyRate(index, .bank)
               }
               .foregroundColor(.black)
             }
           }
           
-          Section(LocalizedStringKey("ExchangeView_privat24")) {
-            ForEach(privat24Currencies.indices, id: \.self) { index in
-              Button(privat24Currencies[index]) {
-                self.currencyName = self.exchangePresenter.getSelectedCurrency(index, currencyType: .privat24)
+          Section(R.string.localizable.exchangeView_privat24()) {
+            ForEach(self.exchangePresenter.privat24Currencies.indices, id: \.self) { index in
+              Button(self.exchangePresenter.privat24Currencies[index].fullCurrencyName) {
+                self.currencyType = self.exchangePresenter.privat24Currencies[index].currentCurrency
+                self.exchangePresenter.updateCurrencyRate(index, .privat24)
               }
               .foregroundColor(.black)
             }
@@ -90,10 +97,10 @@ struct CurrencyIcon: View {
   }
 }
 
-//MARK: - Small Label View
+//MARK: - Small Text View
 
-struct SmallLabelView: View {
-  let text: LocalizedStringKey
+struct SmallTextView: View {
+  let text: String
   var body: some View {
     Text(text)
       .font(Font.custom("HelveticaNeue", size: 20))
@@ -101,9 +108,9 @@ struct SmallLabelView: View {
   }
 }
 
-//MARK: - Currency Rate View
+//MARK: - Large Text View
 
-struct CurrencyRateView: View {
+struct LargeTextView: View {
   var rate: Double
 
   var body: some View {

@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+//MARK: - API
+
 enum API: String {
   case baseURL = "https://api.privatbank.ua/p24api/"
   case cityPath = "infrastructure?json&tso&city="
@@ -15,9 +17,13 @@ enum API: String {
   case privat24CurrencyPath = "pubinfo?exchange&json&coursid=11"
 }
 
+//MARK: - Default Cities
+
 enum DefaultCities: String {
   case cityLviv = "Львів"
 }
+
+//MARK: - Network Manager Delegate
 
 protocol NetworkManagerDelegate: AnyObject {
   func didUpdateData(data: [Device], isInitiaRequest: Bool)

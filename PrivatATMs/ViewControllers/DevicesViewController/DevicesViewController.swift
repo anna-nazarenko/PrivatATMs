@@ -7,6 +7,8 @@
 
 import UIKit
 
+//MARK: - Devices View Controller Protocol
+
 protocol DevicesViewControllerProtocol {
   func pushDetailsVC()
   func reloadData()
@@ -15,15 +17,14 @@ protocol DevicesViewControllerProtocol {
 }
 
 class DevicesViewController: UITableViewController {
-  
-  private var devicesPresenter: DevicesPresenterProtocol?
+  private var devicesPresenter: DevicePresenterProtocol?
   
   
   //MARK: - ViewController Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.devicesPresenter = DevicesPresenter(self)
+    self.devicesPresenter = DevicePresenter(self)
     self.devicesPresenter?.getDevices()
   }
 }
@@ -36,14 +37,19 @@ extension DevicesViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    guard let cell = tableView.dequeueReusableCell(withType: R.reuseIdentifier.atmCell, for: indexPath) else {
+//      print("Error with creating Table View Cell")
+//      return UITableViewCell()
+//    }
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
+    
     if let devices = self.devicesPresenter?.devices {
       cell.textLabel?.text = devices[indexPath.row].placeUa
     }
+    
     return cell
   }
-  
-  //MARK: - TableView Delegate Methods
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     pushDetailsVC()
@@ -54,7 +60,6 @@ extension DevicesViewController {
 
 extension DevicesViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    
     if let searchBarText = searchBar.text, !searchBarText.isEmpty {
       self.devicesPresenter?.getDevices(byCity: searchBarText)
     }
@@ -77,7 +82,7 @@ extension DevicesViewController: UISearchBarDelegate {
   }
 }
 
-//MARK: - Devices View Controller Protocol
+//MARK: - Devices View Controller Protocol Methods
 
 extension DevicesViewController: DevicesViewControllerProtocol {
   func reloadData() {
@@ -94,9 +99,11 @@ extension DevicesViewController: DevicesViewControllerProtocol {
   
   func pushDetailsVC() {
     guard let vc = R.storyboard.details.detailsVC() else { return }
+    
     if let indexPath = tableView.indexPathForSelectedRow, let devices = self.devicesPresenter?.devices {
       vc.device = devices[indexPath.row]
     }
+    
     self.navigate(vc, type: .push)
   }
 }

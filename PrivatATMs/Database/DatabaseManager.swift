@@ -8,10 +8,14 @@
 import Foundation
 import RealmSwift
 
-enum DB {
+//MARK: - Database Type
+
+enum DatabaseType {
   case realm
   case coreData
 }
+
+//MARK: - Database Manager Operations
 
 protocol DatabaseManagerOperations {
   func save(_ objects: [Object])
@@ -19,12 +23,14 @@ protocol DatabaseManagerOperations {
   func getDeviceObjects() -> Results<Device>
 }
 
+//MARK: - Database Manager
+
 class DatabaseManager: DatabaseManagerOperations {
   static let shared = DatabaseManager(.realm)
   private let realmManager = RealmManager()
-  private let bdName: DB
+  private let bdName: DatabaseType
   
-  private init(_ bdName: DB) {
+  private init(_ bdName: DatabaseType) {
     self.bdName = bdName
   }
   
@@ -35,7 +41,7 @@ class DatabaseManager: DatabaseManagerOperations {
       self.realmManager.save(objects)
       
     case .coreData:
-      print("do something")
+      print("Do something")
     }
   }
   
@@ -46,7 +52,7 @@ class DatabaseManager: DatabaseManagerOperations {
       self.realmManager.deleteAll()
       
     case .coreData:
-      print("do something")
+      print("Do something")
     }
   }
   
