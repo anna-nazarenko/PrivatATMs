@@ -7,11 +7,13 @@
 
 import UIKit
 import Rswift
+import MapKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, MKMapViewDelegate {
   
   //MARK: - Properties
   
+  private var detailsPresenter: DetailsPresenter?
   var device: Device?
   
   //MARK: - Outlets
@@ -30,12 +32,23 @@ class DetailsViewController: UIViewController {
       self.tableView.register(WorkingHoursCell.self)
     }
   }
+  @IBOutlet weak var mapView: MKMapView! {
+    didSet {
+      self.mapView.delegate = self
+    }
+  }
   
   //MARK: - ViewController Life Cycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.loadData()
+    if let device = self.device { self.detailsPresenter = DetailsPresenter(device: device) }
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.detailsPresenter?.updateLocationOnMap(mapView: mapView)
   }
   
   //MARK: - Data Manipulation Methods

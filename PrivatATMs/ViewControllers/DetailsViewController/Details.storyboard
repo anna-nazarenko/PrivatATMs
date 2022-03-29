@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lb4-1c-sgd">
-                                <rect key="frame" x="20" y="64" width="374" height="55"/>
+                                <rect key="frame" x="20" y="315" width="374" height="55"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="nfr-yV-gfg"/>
                                 </constraints>
@@ -33,7 +33,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Nf5-bR-Qnr">
-                                <rect key="frame" x="97" y="197" width="220" height="350"/>
+                                <rect key="frame" x="97" y="448" width="220" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="220" id="Wx4-kj-9Zc"/>
@@ -41,26 +41,36 @@
                                 </constraints>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Work schedule:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fjZ-zd-XX9">
-                                <rect key="frame" x="130.5" y="149" width="153" height="28"/>
+                                <rect key="frame" x="130.5" y="395" width="153" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="JXR-RD-hmh">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="6og-Eo-UPT"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="lb4-1c-sgd" firstAttribute="top" secondItem="JXR-RD-hmh" secondAttribute="bottom" constant="15" id="4IJ-YE-j5x"/>
                             <constraint firstItem="Nf5-bR-Qnr" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="7OC-ok-MYT"/>
-                            <constraint firstItem="lb4-1c-sgd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="AFM-0o-r2r"/>
                             <constraint firstItem="fjZ-zd-XX9" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="AWF-BT-Ea9"/>
-                            <constraint firstItem="fjZ-zd-XX9" firstAttribute="top" secondItem="lb4-1c-sgd" secondAttribute="bottom" constant="30" id="Hyy-Uh-r44"/>
+                            <constraint firstItem="JXR-RD-hmh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="M1x-BJ-dck"/>
+                            <constraint firstItem="JXR-RD-hmh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="MoI-88-Tj3"/>
+                            <constraint firstItem="JXR-RD-hmh" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="RS5-7D-K7I"/>
+                            <constraint firstItem="fjZ-zd-XX9" firstAttribute="top" secondItem="lb4-1c-sgd" secondAttribute="bottom" constant="25" id="Uok-Lx-p3X"/>
+                            <constraint firstItem="Nf5-bR-Qnr" firstAttribute="top" secondItem="fjZ-zd-XX9" secondAttribute="bottom" constant="25" id="dGv-uV-iaE"/>
                             <constraint firstItem="lb4-1c-sgd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="r1r-Ym-B6v"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="lb4-1c-sgd" secondAttribute="trailing" constant="20" id="y4K-5w-VEe"/>
-                            <constraint firstItem="Nf5-bR-Qnr" firstAttribute="top" secondItem="fjZ-zd-XX9" secondAttribute="bottom" constant="20" id="z08-8y-1vQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="address" destination="lb4-1c-sgd" id="pxp-gF-xwm"/>
+                        <outlet property="mapView" destination="JXR-RD-hmh" id="aAc-hB-TF2"/>
                         <outlet property="tableView" destination="Nf5-bR-Qnr" id="esP-AL-1Rb"/>
                         <outlet property="workScheduleLabel" destination="fjZ-zd-XX9" id="37b-a1-AKL"/>
                     </connections>
