@@ -55,7 +55,7 @@ extension DevicePresenter: DevicePresenterProtocol {
   
   func updateTableViewWithPreSavedDevices() {
     guard let preSavedDevices = preSavedDevices else {
-      self.preSavedDevices = Array(self.dbManager.getDeviceObjects())
+      self.preSavedDevices = self.dbManager.getDeviceObjects()
       return
     }
     didUpdateData(data: preSavedDevices, isInitiaRequest: false)

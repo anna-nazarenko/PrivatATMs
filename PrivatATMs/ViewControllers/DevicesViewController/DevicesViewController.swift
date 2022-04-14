@@ -26,6 +26,9 @@ class DevicesViewController: UITableViewController {
     super.viewDidLoad()
     self.devicesPresenter = DevicePresenter(self)
     self.devicesPresenter?.getDevices()
+    
+    //Print path to Core Data Database
+    print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
   }
 }
 
@@ -37,11 +40,6 @@ extension DevicesViewController {
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//    guard let cell = tableView.dequeueReusableCell(withType: R.reuseIdentifier.atmCell, for: indexPath) else {
-//      print("Error with creating Table View Cell")
-//      return UITableViewCell()
-//    }
-    
     let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
     
     if let devices = self.devicesPresenter?.devices {

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDDevice" representedClassName=".CDDevice" syncable="YES">
+        <attribute name="cityRU" attributeType="String"/>
+        <attribute name="cityUA" attributeType="String"/>
+        <attribute name="fullAddressEn" optional="YES" attributeType="String"/>
+        <attribute name="fullAddressRu" attributeType="String"/>
+        <attribute name="fullAddressUa" attributeType="String"/>
+        <attribute name="latitude" attributeType="String"/>
+        <attribute name="longitude" attributeType="String"/>
+        <attribute name="placeRu" attributeType="String"/>
+        <attribute name="placeUa" attributeType="String"/>
+        <attribute name="tw" optional="YES" attributeType="Transformable" customClassName="CDSchedule"/>
+        <attribute name="type" attributeType="String"/>
+        <relationship name="schedule" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDSchedule" inverseName="device" inverseEntity="CDSchedule"/>
+    </entity>
+    <entity name="CDSchedule" representedClassName=".CDSchedule" parentEntity="CDDevice" syncable="YES">
+        <attribute name="fri" attributeType="String"/>
+        <attribute name="hol" attributeType="String"/>
+        <attribute name="mon" attributeType="String"/>
+        <attribute name="sat" attributeType="String"/>
+        <attribute name="sun" attributeType="String"/>
+        <attribute name="thu" attributeType="String"/>
+        <attribute name="tue" attributeType="String"/>
+        <attribute name="wed" attributeType="String"/>
+        <relationship name="device" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDDevice" inverseName="schedule" inverseEntity="CDDevice"/>
+    </entity>
+    <elements>
+        <element name="CDDevice" positionX="161.015625" positionY="37.390625" width="128" height="223"/>
+        <element name="CDSchedule" positionX="512.1796875" positionY="57.8203125" width="128" height="178"/>
+    </elements>
+</model>

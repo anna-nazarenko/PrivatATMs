@@ -21,7 +21,7 @@ class Device: Object, Codable {
   @Persisted var type: String
   @Persisted var cityRU: String
   @Persisted var cityUA: String
-  let cityEN: CityEn
+//  let cityEN: CityEn
   @Persisted var fullAddressRu: String
   @Persisted var fullAddressUa: String
   @Persisted var fullAddressEn: String?
