@@ -2,7 +2,7 @@
 //  CDDevice+CoreDataClass.swift
 //  PrivatATMs
 //
-//  Created by Anna Nazarenko on 13.04.2022.
+//  Created by Anna Nazarenko on 14.04.2022.
 //
 //
 

@@ -2,7 +2,7 @@
 //  CDDevice+CoreDataProperties.swift
 //  PrivatATMs
 //
-//  Created by Anna Nazarenko on 13.04.2022.
+//  Created by Anna Nazarenko on 14.04.2022.
 //
 //
 
@@ -26,7 +26,6 @@ extension CDDevice {
     @NSManaged public var placeRu: String?
     @NSManaged public var placeUa: String?
     @NSManaged public var type: String?
-    @NSManaged public var tw: CDSchedule?
     @NSManaged public var schedule: CDSchedule?
 
 }

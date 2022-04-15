@@ -20,10 +20,10 @@
 		43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43458CB827980EB500A98ADE /* DevicesViewController.swift */; };
 		435A19D927B6798400E5D7C6 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435A19D827B6798400E5D7C6 /* DatabaseManager.swift */; };
 		4362350627FD6DDC0036D1E0 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4362350427FD6DDC0036D1E0 /* CoreDataModel.xcdatamodeld */; };
-		4362353F2806CBE40036D1E0 /* CDDevice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362353B2806CBE40036D1E0 /* CDDevice+CoreDataClass.swift */; };
-		436235402806CBE40036D1E0 /* CDDevice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362353C2806CBE40036D1E0 /* CDDevice+CoreDataProperties.swift */; };
-		436235412806CBE40036D1E0 /* CDSchedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362353D2806CBE40036D1E0 /* CDSchedule+CoreDataClass.swift */; };
-		436235422806CBE40036D1E0 /* CDSchedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362353E2806CBE40036D1E0 /* CDSchedule+CoreDataProperties.swift */; };
+		43623563280837D70036D1E0 /* CDDevice+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4362355F280837D70036D1E0 /* CDDevice+CoreDataClass.swift */; };
+		43623564280837D70036D1E0 /* CDDevice+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43623560280837D70036D1E0 /* CDDevice+CoreDataProperties.swift */; };
+		43623565280837D70036D1E0 /* CDSchedule+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43623561280837D70036D1E0 /* CDSchedule+CoreDataClass.swift */; };
+		43623566280837D70036D1E0 /* CDSchedule+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43623562280837D70036D1E0 /* CDSchedule+CoreDataProperties.swift */; };
 		4380A44327BFACAA004E28F3 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44227BFACAA004E28F3 /* String+Extensions.swift */; };
 		4380A44527C3D3E5004E28F3 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44427C3D3E5004E28F3 /* ExchangeView.swift */; };
 		4393606B27E48BC300C37432 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393606A27E48BC300C37432 /* R.generated.swift */; };
@@ -64,10 +64,10 @@
 		43458CB827980EB500A98ADE /* DevicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevicesViewController.swift; sourceTree = "<group>"; };
 		435A19D827B6798400E5D7C6 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		4362350527FD6DDC0036D1E0 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		4362353B2806CBE40036D1E0 /* CDDevice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDDevice+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4362353C2806CBE40036D1E0 /* CDDevice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDDevice+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		4362353D2806CBE40036D1E0 /* CDSchedule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSchedule+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		4362353E2806CBE40036D1E0 /* CDSchedule+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSchedule+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		4362355F280837D70036D1E0 /* CDDevice+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDDevice+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		43623560280837D70036D1E0 /* CDDevice+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDDevice+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		43623561280837D70036D1E0 /* CDSchedule+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSchedule+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		43623562280837D70036D1E0 /* CDSchedule+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDSchedule+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		4380A44227BFACAA004E28F3 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4380A44427C3D3E5004E28F3 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 		4393606A27E48BC300C37432 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
@@ -163,10 +163,10 @@
 		4362350727FD70BA0036D1E0 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				4362353B2806CBE40036D1E0 /* CDDevice+CoreDataClass.swift */,
-				4362353C2806CBE40036D1E0 /* CDDevice+CoreDataProperties.swift */,
-				4362353D2806CBE40036D1E0 /* CDSchedule+CoreDataClass.swift */,
-				4362353E2806CBE40036D1E0 /* CDSchedule+CoreDataProperties.swift */,
+				4362355F280837D70036D1E0 /* CDDevice+CoreDataClass.swift */,
+				43623560280837D70036D1E0 /* CDDevice+CoreDataProperties.swift */,
+				43623561280837D70036D1E0 /* CDSchedule+CoreDataClass.swift */,
+				43623562280837D70036D1E0 /* CDSchedule+CoreDataProperties.swift */,
 				4362350427FD6DDC0036D1E0 /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -435,7 +435,7 @@
 				43F6642D279701DB008C7990 /* ViewController.swift in Sources */,
 				430734CD27983FFA001A11BC /* ExchangeViewController.swift in Sources */,
 				43A3139E27BE98920010566A /* CoreDataManager.swift in Sources */,
-				436235422806CBE40036D1E0 /* CDSchedule+CoreDataProperties.swift in Sources */,
+				43623566280837D70036D1E0 /* CDSchedule+CoreDataProperties.swift in Sources */,
 				4380A44327BFACAA004E28F3 /* String+Extensions.swift in Sources */,
 				43C97785279EB4EE008778C9 /* Schedule.swift in Sources */,
 				4334040227B14EC7009CD616 /* DevicePresenter.swift in Sources */,
@@ -447,14 +447,14 @@
 				43BA4AFD27F35F7700753760 /* DetailsPresenter.swift in Sources */,
 				4362350627FD6DDC0036D1E0 /* CoreDataModel.xcdatamodeld in Sources */,
 				43C9778927A02518008778C9 /* WorkingHoursCell.swift in Sources */,
-				4362353F2806CBE40036D1E0 /* CDDevice+CoreDataClass.swift in Sources */,
+				43623563280837D70036D1E0 /* CDDevice+CoreDataClass.swift in Sources */,
 				43F66429279701DB008C7990 /* AppDelegate.swift in Sources */,
 				4380A44527C3D3E5004E28F3 /* ExchangeView.swift in Sources */,
 				4393606D27E4939D00C37432 /* Reusable+Extensions.swift in Sources */,
-				436235402806CBE40036D1E0 /* CDDevice+CoreDataProperties.swift in Sources */,
+				43623564280837D70036D1E0 /* CDDevice+CoreDataProperties.swift in Sources */,
 				4336AB0527B3EBE30004C1C6 /* UIViewController+Extensions.swift in Sources */,
 				43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */,
-				436235412806CBE40036D1E0 /* CDSchedule+CoreDataClass.swift in Sources */,
+				43623565280837D70036D1E0 /* CDSchedule+CoreDataClass.swift in Sources */,
 				4344434527C6305D00224C93 /* ExchangePresenter.swift in Sources */,
 				43458CB927980EB500A98ADE /* DevicesViewController.swift in Sources */,
 				4305DA9E27994D78007BCEE6 /* Device.swift in Sources */,
