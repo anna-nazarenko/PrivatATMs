@@ -12,28 +12,31 @@ import UIKit
 class CoreDataManager {
   let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
   
+  private func deleteEntity(name: String) {
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+    let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+    do { try self.context.execute(batchDeleteRequest) }
+    catch { print("Detele all data in \(name) error :", error) }
+  }
+  
   func save(_ objects: [Device]) {
     
     for device in objects {
       let cdDevice = CDDevice(context: self.context)
       
-      //TODO: Save Schedule to CDSChedule
-      
-//      let cdSchedule = CDSchedule(context: self.context)
-//      guard let schedule = device.tw else {
-//        print("No schedule")
-//        return
-//      }
+      let cdSchedule = CDSchedule(context: self.context)
+      guard let schedule = device.tw else { return }
 
-//      cdSchedule.mon = schedule.mon
-//      cdSchedule.tue = schedule.tue
-//      cdSchedule.wed = schedule.wed
-//      cdSchedule.thu = schedule.thu
-//      cdSchedule.fri = schedule.fri
-//      cdSchedule.sat = schedule.sat
-//      cdSchedule.sun = schedule.sun
-//      cdSchedule.hol = schedule.hol
-//      cdSchedule.device = cdDevice
+      cdSchedule.mon = schedule.mon
+      cdSchedule.tue = schedule.tue
+      cdSchedule.wed = schedule.wed
+      cdSchedule.thu = schedule.thu
+      cdSchedule.fri = schedule.fri
+      cdSchedule.sat = schedule.sat
+      cdSchedule.sun = schedule.sun
+      cdSchedule.hol = schedule.hol
+      cdSchedule.device = cdDevice
       
       cdDevice.type = device.type
       cdDevice.latitude = device.latitude
@@ -45,8 +48,7 @@ class CoreDataManager {
       cdDevice.placeUa = device.placeUa
       cdDevice.cityRU = device.cityRU
       cdDevice.cityUA = device.cityUA
-//      cdDevice.schedule = cdSchedule
-//      cdDevice.tw = cdSchedule
+      cdDevice.schedule = cdSchedule
 
       do { try self.context.save() }
       catch let error as NSError { print("Error saving context \(error) \(error.userInfo)") }
@@ -54,7 +56,8 @@ class CoreDataManager {
   }
   
   func deleteAll() {
-    print("Deleting all data")
+    deleteEntity(name: "CDDevice")
+    deleteEntity(name: "CDSchedule")
   }
   
   func getDeviceObjects() -> [Device] {
