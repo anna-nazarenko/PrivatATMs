@@ -14,7 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    //print(Realm.Configuration.defaultConfiguration.fileURL ?? "No Realm location")
+    print("Path to Realm Database: \(Realm.Configuration.defaultConfiguration.fileURL)")
+    print("Path to Core Data Database \(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))")
     
     return true
   }

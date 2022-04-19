@@ -25,10 +25,7 @@ class DevicesViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.devicesPresenter = DevicePresenter(self)
-    self.devicesPresenter?.getDevices()
-    
-    //Print path to Core Data Database
-    print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+    self.devicesPresenter?.getDevices()    
   }
 }
 
