@@ -42,7 +42,6 @@
 		43F6642B279701DB008C7990 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6642A279701DB008C7990 /* SceneDelegate.swift */; };
 		43F6642D279701DB008C7990 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43F6642C279701DB008C7990 /* ViewController.swift */; };
 		43F66430279701DB008C7990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F6642E279701DB008C7990 /* Main.storyboard */; };
-		43F66432279701DB008C7990 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43F66431279701DB008C7990 /* Assets.xcassets */; };
 		43F66435279701DB008C7990 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43F66433279701DB008C7990 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -85,7 +84,6 @@
 		43F6642A279701DB008C7990 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		43F6642C279701DB008C7990 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43F6642F279701DB008C7990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		43F66431279701DB008C7990 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43F66434279701DB008C7990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43F66436279701DB008C7990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		54088EC772C9BAB4624EC81C /* Pods-PrivatATMs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrivatATMs.debug.xcconfig"; path = "Target Support Files/Pods-PrivatATMs/Pods-PrivatATMs.debug.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				433177FB27E3998A005391C0 /* Localizations */,
-				43F66431279701DB008C7990 /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -371,7 +368,6 @@
 			files = (
 				43C9778727A01400008778C9 /* WorkingHoursCell.xib in Resources */,
 				43F66435279701DB008C7990 /* LaunchScreen.storyboard in Resources */,
-				43F66432279701DB008C7990 /* Assets.xcassets in Resources */,
 				433177FE27E399C8005391C0 /* Localizable.strings in Resources */,
 				43F66430279701DB008C7990 /* Main.storyboard in Resources */,
 				43C9777F279E904A008778C9 /* Details.storyboard in Resources */,

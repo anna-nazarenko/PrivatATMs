@@ -27,7 +27,7 @@ protocol DatabaseManagerOperations {
 //MARK: - Database Manager
 
 class DatabaseManager: DatabaseManagerOperations {
-  static let shared = DatabaseManager(.coreData)
+  static let shared = DatabaseManager(.realm)
   private let bdName: DatabaseType
   private let realmManager = RealmManager()
   private let coreDataManager = CoreDataManager()

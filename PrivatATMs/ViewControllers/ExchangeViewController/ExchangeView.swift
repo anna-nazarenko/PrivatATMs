@@ -15,6 +15,7 @@ struct ExchangeView: View {
   
   @StateObject var exchangePresenter = ExchangePresenter()
   @State var currencyType = currencies.usd
+  let currencyManager = CurrencyManager.shared
   
   //MARK: - Body
   
@@ -24,7 +25,7 @@ struct ExchangeView: View {
       //MARK: - Currency Rate View
       
       ZStack {
-        Color(UIColor(.cyan))
+        Color("currencyBackgroundColor")
         VStack {
           self.currencyType.currencyImage
           
@@ -54,7 +55,7 @@ struct ExchangeView: View {
                 self.currencyType = self.exchangePresenter.bankCurrencies[index].currentCurrency
                 self.exchangePresenter.updateCurrencyRate(index, .bank)
               }
-              .foregroundColor(.black)
+              .foregroundColor(.primary)
             }
           }
           
@@ -64,7 +65,7 @@ struct ExchangeView: View {
                 self.currencyType = self.exchangePresenter.privat24Currencies[index].currentCurrency
                 self.exchangePresenter.updateCurrencyRate(index, .privat24)
               }
-              .foregroundColor(.black)
+              .foregroundColor(.primary)
             }
           }
         }
@@ -72,6 +73,10 @@ struct ExchangeView: View {
     }
     .edgesIgnoringSafeArea(.top)
     .environmentObject(exchangePresenter)
+    .onAppear() {
+      self.currencyManager.fetchBankCurrency()
+      self.currencyManager.fetchPrivat24Currency()
+    }
   }
 }
 
@@ -91,7 +96,7 @@ struct CurrencyIcon: View {
     Image(systemName: name)
       .resizable()
       .frame(width: 100, height: 100, alignment: .center)
-      .foregroundColor(.yellow)
+      .foregroundColor(Color("currencyIconColor"))
       .padding(25)
       .padding(.top, 40)
   }
