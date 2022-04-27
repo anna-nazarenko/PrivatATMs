@@ -31,7 +31,5 @@ class DetailsPresenter {
 
     let viewRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
     mapView.setRegion(viewRegion, animated: true)
-    
-    print(point.coordinate)
   }
 }

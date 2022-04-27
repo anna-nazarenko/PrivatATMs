@@ -18,7 +18,11 @@ class DetailsViewController: UIViewController, MKMapViewDelegate {
   
   //MARK: - Outlets
   
-  @IBOutlet weak var address: UILabel!
+  @IBOutlet weak var address: UILabel! {
+    didSet {
+      self.address.textColor = .label
+    }
+  }
   @IBOutlet weak var workScheduleLabel: UILabel! {
     didSet {
       self.workScheduleLabel.text = R.string.localizable.detailsView_workSchedule()
