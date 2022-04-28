@@ -16,8 +16,17 @@ protocol DevicesViewControllerProtocol {
   func hideSpinner()
 }
 
-class DevicesViewController: UITableViewController {
+class DevicesViewController: UIViewController {
   private var devicesPresenter: DevicePresenterProtocol?
+  
+  //MARK: - Outlets
+  
+  @IBOutlet weak var tableView: UITableView! {
+    didSet {
+      tableView.dataSource = self
+      tableView.delegate = self
+    }
+  }
   
   
   //MARK: - ViewController Life Cycle
@@ -31,12 +40,12 @@ class DevicesViewController: UITableViewController {
 
 //MARK: - TableView Datasource/Delegate Methods
 
-extension DevicesViewController {
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension DevicesViewController: UITableViewDataSource, UITableViewDelegate {
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.devicesPresenter?.devices?.count ?? 0
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ATMCell", for: indexPath)
     
     if let devices = self.devicesPresenter?.devices {
@@ -46,7 +55,7 @@ extension DevicesViewController {
     return cell
   }
   
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     pushDetailsVC()
   }
 }

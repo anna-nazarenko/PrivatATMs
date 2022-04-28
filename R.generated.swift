@@ -156,31 +156,6 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 1 colors.
-  struct color {
-    /// Color `AccentColor`.
-    static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
-
-    #if os(iOS) || os(tvOS)
-    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
-    @available(tvOS 11.0, *)
-    @available(iOS 11.0, *)
-    static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
-      return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
-    }
-    #endif
-
-    #if os(watchOS)
-    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
-    @available(watchOSApplicationExtension 4.0, *)
-    static func accentColor(_: Void = ()) -> UIKit.UIColor? {
-      return UIKit.UIColor(named: R.color.accentColor.name)
-    }
-    #endif
-
-    fileprivate init() {}
-  }
-
   /// This `R.info` struct is generated, and contains static references to 1 properties.
   struct info {
     struct uiApplicationSceneManifest {
@@ -807,24 +782,12 @@ struct _R: Rswift.Validatable {
       typealias InitialController = ViewController
 
       let bundle = R.hostingBundle
-      let deviceVC = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "DeviceVC")
-      let devicesVC = StoryboardViewControllerResource<DevicesViewController>(identifier: "DevicesVC")
       let name = "Main"
-
-      func deviceVC(_: Void = ()) -> UIKit.UINavigationController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: deviceVC)
-      }
-
-      func devicesVC(_: Void = ()) -> DevicesViewController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: devicesVC)
-      }
 
       static func validate() throws {
         if #available(iOS 13.0, *) { if UIKit.UIImage(systemName: "creditcard") == nil { throw Rswift.ValidationError(description: "[R.swift] System image named 'creditcard' is used in storyboard 'Main', but couldn't be loaded.") } }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
-        if _R.storyboard.main().deviceVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'deviceVC' could not be loaded from storyboard 'Main' as 'UIKit.UINavigationController'.") }
-        if _R.storyboard.main().devicesVC() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'devicesVC' could not be loaded from storyboard 'Main' as 'DevicesViewController'.") }
       }
 
       fileprivate init() {}
