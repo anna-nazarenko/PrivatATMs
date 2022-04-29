@@ -28,6 +28,7 @@
 		4380A44527C3D3E5004E28F3 /* ExchangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4380A44427C3D3E5004E28F3 /* ExchangeView.swift */; };
 		4393606B27E48BC300C37432 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393606A27E48BC300C37432 /* R.generated.swift */; };
 		4393606D27E4939D00C37432 /* Reusable+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4393606C27E4939D00C37432 /* Reusable+Extensions.swift */; };
+		43999EDF281BCE6B00449A28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43999EDE281BCE6B00449A28 /* Assets.xcassets */; };
 		43A3139827BA43F10010566A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139727BA43F10010566A /* Realm */; };
 		43A3139A27BA43F10010566A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 43A3139927BA43F10010566A /* RealmSwift */; };
 		43A3139C27BE94810010566A /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43A3139B27BE94810010566A /* RealmManager.swift */; };
@@ -71,6 +72,7 @@
 		4380A44427C3D3E5004E28F3 /* ExchangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeView.swift; sourceTree = "<group>"; };
 		4393606A27E48BC300C37432 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		4393606C27E4939D00C37432 /* Reusable+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reusable+Extensions.swift"; sourceTree = "<group>"; };
+		43999EDE281BCE6B00449A28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43A3139B27BE94810010566A /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		43A3139D27BE98920010566A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		43BA4AFC27F35F7700753760 /* DetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsPresenter.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 		433177FA27E398E4005391C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				43999EDE281BCE6B00449A28 /* Assets.xcassets */,
 				433177FB27E3998A005391C0 /* Localizations */,
 			);
 			path = Resources;
@@ -370,6 +373,7 @@
 				43F66435279701DB008C7990 /* LaunchScreen.storyboard in Resources */,
 				433177FE27E399C8005391C0 /* Localizable.strings in Resources */,
 				43F66430279701DB008C7990 /* Main.storyboard in Resources */,
+				43999EDF281BCE6B00449A28 /* Assets.xcassets in Resources */,
 				43C9777F279E904A008778C9 /* Details.storyboard in Resources */,
 				4331780527E47405005391C0 /* Exchange.storyboard in Resources */,
 			);

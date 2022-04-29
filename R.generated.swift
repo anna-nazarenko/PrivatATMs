@@ -156,6 +156,69 @@ struct R: Rswift.Validatable {
   }
   #endif
 
+  /// This `R.color` struct is generated, and contains static references to 3 colors.
+  struct color {
+    /// Color `AccentColor`.
+    static let accentColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "AccentColor")
+    /// Color `currencyBackgroundColor`.
+    static let currencyBackgroundColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "currencyBackgroundColor")
+    /// Color `currencyIconColor`.
+    static let currencyIconColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "currencyIconColor")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func accentColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.accentColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "currencyBackgroundColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func currencyBackgroundColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.currencyBackgroundColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "currencyIconColor", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func currencyIconColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.currencyIconColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "AccentColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func accentColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.accentColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "currencyBackgroundColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func currencyBackgroundColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.currencyBackgroundColor.name)
+    }
+    #endif
+
+    #if os(watchOS)
+    /// `UIColor(named: "currencyIconColor", bundle: ..., traitCollection: ...)`
+    @available(watchOSApplicationExtension 4.0, *)
+    static func currencyIconColor(_: Void = ()) -> UIKit.UIColor? {
+      return UIKit.UIColor(named: R.color.currencyIconColor.name)
+    }
+    #endif
+
+    fileprivate init() {}
+  }
+
   /// This `R.info` struct is generated, and contains static references to 1 properties.
   struct info {
     struct uiApplicationSceneManifest {
