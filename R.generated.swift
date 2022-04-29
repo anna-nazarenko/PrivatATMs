@@ -664,11 +664,11 @@ struct R: Rswift.Validatable {
       /// uk translation: Термінали
       ///
       /// Locales: uk
-      static let ffbXhKPtTitle = Rswift.StringResource(key: "ffb-xh-kPt.title", tableName: "Main", bundle: R.hostingBundle, locales: ["uk"], comment: nil)
+      static let efpjrof2Title = Rswift.StringResource(key: "EFP-jR-oF2.title", tableName: "Main", bundle: R.hostingBundle, locales: ["uk"], comment: nil)
       /// uk translation: Термінали
       ///
       /// Locales: uk
-      static let rba3zHybTitle = Rswift.StringResource(key: "Rba-3z-hyb.title", tableName: "Main", bundle: R.hostingBundle, locales: ["uk"], comment: nil)
+      static let jytRmUsfTitle = Rswift.StringResource(key: "JYT-Rm-usf.title", tableName: "Main", bundle: R.hostingBundle, locales: ["uk"], comment: nil)
 
       /// uk translation: Курс валют
       ///
@@ -688,31 +688,31 @@ struct R: Rswift.Validatable {
       /// uk translation: Термінали
       ///
       /// Locales: uk
-      static func ffbXhKPtTitle(preferredLanguages: [String]? = nil) -> String {
+      static func efpjrof2Title(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("ffb-xh-kPt.title", tableName: "Main", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("EFP-jR-oF2.title", tableName: "Main", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Main", preferredLanguages: preferredLanguages) else {
-          return "ffb-xh-kPt.title"
+          return "EFP-jR-oF2.title"
         }
 
-        return NSLocalizedString("ffb-xh-kPt.title", tableName: "Main", bundle: bundle, comment: "")
+        return NSLocalizedString("EFP-jR-oF2.title", tableName: "Main", bundle: bundle, comment: "")
       }
 
       /// uk translation: Термінали
       ///
       /// Locales: uk
-      static func rba3zHybTitle(preferredLanguages: [String]? = nil) -> String {
+      static func jytRmUsfTitle(preferredLanguages: [String]? = nil) -> String {
         guard let preferredLanguages = preferredLanguages else {
-          return NSLocalizedString("Rba-3z-hyb.title", tableName: "Main", bundle: hostingBundle, comment: "")
+          return NSLocalizedString("JYT-Rm-usf.title", tableName: "Main", bundle: hostingBundle, comment: "")
         }
 
         guard let (_, bundle) = localeBundle(tableName: "Main", preferredLanguages: preferredLanguages) else {
-          return "Rba-3z-hyb.title"
+          return "JYT-Rm-usf.title"
         }
 
-        return NSLocalizedString("Rba-3z-hyb.title", tableName: "Main", bundle: bundle, comment: "")
+        return NSLocalizedString("JYT-Rm-usf.title", tableName: "Main", bundle: bundle, comment: "")
       }
 
       fileprivate init() {}

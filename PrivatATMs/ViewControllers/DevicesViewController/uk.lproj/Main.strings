@@ -1,9 +1,9 @@
 
+/* Class = "UINavigationItem"; title = "ATMs"; ObjectID = "EFP-jR-oF2"; */
+"EFP-jR-oF2.title" = "Термінали";
+
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "Hd6-fh-uKV"; */
 "Hd6-fh-uKV.title" = "Курс валют";
 
-/* Class = "UINavigationItem"; title = "ATMs"; ObjectID = "Rba-3z-hyb"; */
-"Rba-3z-hyb.title" = "Термінали";
-
-/* Class = "UITabBarItem"; title = "ATMs"; ObjectID = "ffb-xh-kPt"; */
-"ffb-xh-kPt.title" = "Термінали";
+/* Class = "UITabBarItem"; title = "ATMs"; ObjectID = "JYT-Rm-usf"; */
+"JYT-Rm-usf.title" = "Термінали";
