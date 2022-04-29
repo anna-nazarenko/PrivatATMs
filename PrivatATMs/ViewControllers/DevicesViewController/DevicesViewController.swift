@@ -28,7 +28,6 @@ class DevicesViewController: UIViewController {
     }
   }
   
-  
   //MARK: - ViewController Life Cycle
   
   override func viewDidLoad() {
